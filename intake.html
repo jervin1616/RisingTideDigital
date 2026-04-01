@@ -434,7 +434,12 @@
     <span class="progress-label">6 sections &mdash; about 5 minutes</span>
   </div>
 
-  <form id="intakeForm" onsubmit="submitForm(event)" novalidate>
+  <form id="intakeForm" action="https://api.web3forms.com/submit" method="POST" novalidate>
+
+      <!-- Web3Forms configuration -->
+      <input type="hidden" name="access_key" value="4afb9b32-d081-4b5b-94d3-98470c9b4e49" />
+      <input type="hidden" name="subject" value="New Inquiry — Rising Tide Digital" />
+      <input type="hidden" name="redirect" value="https://jervin1616.github.io/RisingTideDigital/thanks.html" />
 
     <!-- 1: Contact Info -->
     <div class="form-section">
@@ -640,9 +645,8 @@
     <!-- Submit -->
     <div class="submit-section">
       <p>
-        Once you submit, your responses will open in your email client pre-filled
-        and ready to send to Rising Tide Digital. We'll follow up within 1 business
-        day with a clear, flat-rate quote — no pressure.
+        Hit send and we'll receive your intake responses directly. We'll follow up
+        within 1 business day with a clear, flat-rate quote — no pressure.
       </p>
       <button type="submit" class="submit-btn">
         Send my intake form <span class="submit-arrow">→</span>
@@ -655,93 +659,12 @@
   <div class="page-footer">
     <p>
       <a href="index.html">Rising Tide Digital LLC</a>
-      &nbsp;·&nbsp; Wilmington, NC
-      &nbsp;·&nbsp; "A rising tide lifts all boats"
+      &nbsp;&middot;&nbsp; Wilmington, NC
+      &nbsp;&middot;&nbsp; "A rising tide lifts all boats"
     </p>
   </div>
 
 </div>
-
-<script>
-  function submitForm(e) {
-    e.preventDefault();
-
-    const form = document.getElementById('intakeForm');
-
-    const get = (id) => {
-      const el = document.getElementById(id);
-      return el ? el.value.trim() : '';
-    };
-
-    const getRadio = (name) => {
-      const el = form.querySelector(`input[name="${name}"]:checked`);
-      return el ? el.value : 'Not answered';
-    };
-
-    const getCheckboxes = (name) => {
-      const checked = [...form.querySelectorAll(`input[name="${name}"]:checked`)];
-      return checked.length ? checked.map(c => c.value).join(', ') : 'None selected';
-    };
-
-    const fname   = get('fname');
-    const lname   = get('lname');
-    const email   = get('email');
-    const bizname = get('bizname');
-
-    if (!fname || !lname || !email || !bizname) {
-      alert('Please fill in your first name, last name, business name, and email before submitting.');
-      return;
-    }
-
-    const subject = encodeURIComponent(`New Client Intake — ${bizname} (${fname} ${lname})`);
-
-    const body = [
-      '=== RISING TIDE DIGITAL — NEW CLIENT INTAKE ===',
-      '',
-      '--- CONTACT INFO ---',
-      `Name:      ${fname} ${lname}`,
-      `Email:     ${email}`,
-      `Phone:     ${get('phone') || 'Not provided'}`,
-      `Business:  ${bizname}`,
-      `Industry:  ${get('industry') || 'Not provided'}`,
-      '',
-      '--- WEBSITE ---',
-      `Has a website: ${getRadio('has_site')}`,
-      `Current URL:   ${get('current_url') || 'None'}`,
-      `Main goal:     ${getRadio('goal')}`,
-      `Audience:      ${get('audience') || 'Not provided'}`,
-      '',
-      '--- PAGES & FEATURES ---',
-      `Pages needed:     ${getCheckboxes('pages')}`,
-      `Special features: ${get('features') || 'None listed'}`,
-      '',
-      '--- BRAND & DESIGN ---',
-      `Logo:        ${getRadio('logo')}`,
-      `Colors:      ${get('colors') || 'Not provided'}`,
-      `Fonts:       ${get('fonts') || 'Not provided'}`,
-      `Inspiration: ${get('inspo') || 'Not provided'}`,
-      `Vibe:        ${getRadio('vibe')}`,
-      '',
-      '--- CONTENT ---',
-      `Copy:   ${getRadio('copy')}`,
-      `Photos: ${getRadio('photos')}`,
-      '',
-      '--- BUDGET & TIMELINE ---',
-      `Budget:      ${getRadio('budget')}`,
-      `Timeline:    ${getRadio('timeline')}`,
-      `Maintenance: ${getRadio('maintain')}`,
-      `Referral:    ${getRadio('referral')}`,
-      `Notes:       ${get('notes') || 'None'}`,
-      '',
-      '================================================',
-    ].join('\n');
-
-    // ⚠ REPLACE the email below with your actual business email address
-    const toEmail = 'YOUR_EMAIL@risingtidedigital.com';
-
-    window.location.href = `mailto:${toEmail}?subject=${subject}&body=${encodeURIComponent(body)}`;
-  }
-</script>
 
 </body>
 </html>
