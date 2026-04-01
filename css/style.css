@@ -1576,3 +1576,26 @@ select.form-control {
   .hero-stats { gap: 1rem; }
   .hero-stat-num { font-size: 1.4rem; }
 }
+
+/* ---------- Portfolio Featured Card ---------- */
+.portfolio-card-featured {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 1px var(--gold), var(--shadow-sm);
+}
+
+.portfolio-card-featured:hover {
+  box-shadow: 0 0 0 1px var(--gold), var(--shadow-gold), var(--shadow-md);
+}
+
+.portfolio-featured-badge {
+  display: inline-block;
+  background: var(--gold);
+  color: var(--navy);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.75rem;
+  border-radius: 50px;
+  margin-bottom: 0.6rem;
+}
