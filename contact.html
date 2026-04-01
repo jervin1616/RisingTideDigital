@@ -147,15 +147,12 @@
             <h3>Request a Free Quote</h3>
             <p>All fields marked <span style="color:var(--gold);">*</span> are required.</p>
 
-            <!--
-              ACTION PLACEHOLDER:
-              Replace the action URL below with your form endpoint.
-              Options:
-                - Formspree:  action="https://formspree.io/f/YOUR_FORM_ID"
-                - EmailJS:    Remove action, use JS emailjs.sendForm()
-                - Your own:   action="your-backend-endpoint"
-            -->
-            <form id="contactForm" action="YOUR_FORM_ENDPOINT_HERE" method="POST">
+            <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+
+              <!-- Web3Forms configuration -->
+              <input type="hidden" name="access_key" value="4afb9b32-d081-4b5b-94d3-98470c9b4e49" />
+              <input type="hidden" name="subject" value="New Inquiry — Rising Tide Digital" />
+              <input type="hidden" name="redirect" value="https://jervin1616.github.io/RisingTideDigital/thanks.html" />
 
               <div class="form-row">
                 <div class="form-group">
