@@ -1375,7 +1375,8 @@ select.form-control {
   height: 200px;
   width: auto;
   display: block;
-  margin-bottom: 16px;
+  margin: 0 auto 16px;
+  align-self: center;
   filter: drop-shadow(0 8px 40px rgba(201,164,67,0.30));
   animation: pulse-glow 3s ease-in-out infinite;
 }
