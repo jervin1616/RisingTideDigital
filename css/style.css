@@ -425,8 +425,8 @@ p { font-size: 1rem; line-height: 1.75; color: var(--text-muted); }
 
 .hero-logo-wrap {
   position: relative;
-  width: 690px;
-  height: 690px;
+  width: 586px;
+  height: 586px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1854,11 +1854,11 @@ select.form-control {
 /* Hero brand tagline (centered under logo, right column) */
 .hero-brand-tagline {
   font-family: var(--font-heading);
-  font-size: 0.82rem;
+  font-size: 1.25rem;
   color: rgba(201,164,67,0.65);
   letter-spacing: 0.14em;
   font-style: italic;
   text-align: center;
-  margin-top: 0.75rem;
+  margin-top: -0.5rem;
   margin-bottom: 0;
 }
