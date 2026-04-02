@@ -23,6 +23,44 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@700&display=swap" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .portfolio-section-heading {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #1e3a5f;
+      margin-bottom: 0.5rem;
+    }
+    .portfolio-section-intro {
+      color: #555;
+      font-size: 0.975rem;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+    .badge-pill {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+    .badge-live-client {
+      background: rgba(16, 135, 75, 0.12);
+      color: #10874b;
+      border: 1px solid rgba(16, 135, 75, 0.3);
+    }
+    .badge-concept {
+      background: rgba(90, 100, 120, 0.1);
+      color: #4a5568;
+      border: 1px solid rgba(90, 100, 120, 0.25);
+    }
+    .portfolio-section + .portfolio-section {
+      border-top: 1px solid #e2e8f0;
+      padding-top: 3rem;
+    }
+  </style>
 </head>
 <body>
 
@@ -90,202 +128,154 @@
   <section class="section section-alt">
     <div class="container">
 
-      <div class="portfolio-grid">
+      <!-- ---- SECTION 1: Live Client Work ---- -->
+      <div class="portfolio-section" style="margin-bottom:3rem;">
+        <h2 class="portfolio-section-heading">Live Client Work</h2>
+        <div class="portfolio-grid" style="justify-items:center;">
 
-        <!-- ---- FEATURED PROJECT: Cape Fear Collective ---- -->
-        <div class="portfolio-card portfolio-card-featured reveal reveal-delay-1">
-          <div class="portfolio-thumb" style="background:#1a1714;">
-            <!-- ⚠ SCREENSHOT NEEDED: https://jervin1616.github.io/Cape-Fear-Collective/ -->
-            <img src="assets/images/screenshots/cape-fear-collective.jpg"
-                 alt="Cape Fear Collective website screenshot"
-                 onerror="this.parentElement.innerHTML='<span style=\'font-family:Georgia,serif;font-style:italic;font-size:0.9rem;color:rgba(255,255,255,0.6);padding:1rem;text-align:center;\'>📷 Screenshot<br>Cape Fear Collective</span>';" />
+          <!-- Premier DJ Productions -->
+          <div class="portfolio-card portfolio-card-featured reveal reveal-delay-1" style="max-width:620px;width:100%;">
+            <div class="portfolio-thumb">
+              <!-- ⚠ SCREENSHOT NEEDED: https://www.premierdjproductions.com -->
+              <img src="assets/images/screenshots/premier-dj-productions.jpg"
+                   alt="Premier DJ Productions website screenshot"
+                   onerror="this.parentElement.innerHTML='<span style=\'font-size:0.9rem;color:rgba(255,255,255,0.6);padding:1rem;text-align:center;\'>🎵 Screenshot<br>Premier DJ Productions</span>';" />
+            </div>
+            <div class="portfolio-card-body">
+              <span class="badge-pill badge-live-client">Live Client</span>
+              <span class="portfolio-tag">Event Services</span>
+              <span class="portfolio-category">Event Services &middot; Wilmington, NC</span>
+              <h3>Premier DJ Productions</h3>
+              <p>
+                Wedding and event DJ services — full brand site with booking inquiry
+                flow and gallery.
+              </p>
+              <a href="https://www.premierdjproductions.com" target="_blank" rel="noopener noreferrer"
+                 class="btn btn-primary">
+                Visit Live Site <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+            </div>
           </div>
-          <div class="portfolio-card-body" style="position:relative;">
-            <span class="portfolio-featured-badge">Featured</span>
-            <span class="portfolio-tag">Photography Studio</span>
-            <span class="portfolio-category">Wedding Photography &middot; Wilmington, NC</span>
-            <h3>Cape Fear Collective</h3>
-            <p>
-              Premium wedding photography studio site. React + Tailwind CSS. Luxury
-              editorial aesthetic with filterable portfolio gallery, investment
-              packages, FAQ accordion, and inquiry form.
-            </p>
-            <a href="https://jervin1616.github.io/Cape-Fear-Collective/" target="_blank" rel="noopener noreferrer"
-               class="btn btn-primary">
-              Visit Live Site <i class="fa-solid fa-arrow-up-right-from-square"></i>
-            </a>
-          </div>
+
         </div>
-
-        <!-- ---- LIVE PROJECT: Premier DJ Productions ---- -->
-        <div class="portfolio-card reveal reveal-delay-1">
-          <div class="portfolio-thumb">
-            <!-- ⚠ SCREENSHOT NEEDED: https://www.premierdjproductions.com -->
-            <img src="assets/images/screenshots/premier-dj-productions.jpg"
-                 alt="Premier DJ Productions website screenshot"
-                 onerror="this.parentElement.innerHTML='<span style=\'font-size:0.9rem;color:rgba(255,255,255,0.6);padding:1rem;text-align:center;\'>🎵 Screenshot<br>Premier DJ Productions</span>';" />
-          </div>
-          <div class="portfolio-card-body">
-            <span class="portfolio-tag">Event Services</span>
-            <span class="portfolio-category">Event Services &middot; Wilmington, NC</span>
-            <h3>Premier DJ Productions</h3>
-            <p>
-              Wedding and event DJ services — full brand site with booking inquiry
-              flow and gallery. Built as a gift for a wedding client.
-            </p>
-            <a href="https://www.premierdjproductions.com" target="_blank" rel="noopener noreferrer"
-               class="btn btn-primary">
-              Visit Live Site <i class="fa-solid fa-arrow-up-right-from-square"></i>
-            </a>
-          </div>
-        </div>
-
-        <!-- ---- LIVE PROJECT: ILM Handyman ---- -->
-        <div class="portfolio-card reveal reveal-delay-2">
-          <div class="portfolio-thumb" style="background:#2b2b2b;">
-            <!-- ⚠ SCREENSHOT NEEDED: https://jervin1616.github.io/ILMHandyMan/ -->
-            <img src="assets/images/screenshots/ilm-handyman.jpg"
-                 alt="ILM Handyman website screenshot"
-                 onerror="this.parentElement.innerHTML='<span style=\'font-size:0.9rem;color:rgba(255,255,255,0.6);padding:1rem;text-align:center;\'>⚒ Screenshot<br>ILM Handyman</span>';" />
-          </div>
-          <div class="portfolio-card-body">
-            <span class="portfolio-tag">Home Services</span>
-            <span class="portfolio-category">General Contracting &middot; Wilmington, NC</span>
-            <h3>ILM Handyman</h3>
-            <p>
-              Full contractor site with services, about, and quote request form.
-              Dark, trust-heavy design built for the trades market.
-            </p>
-            <a href="https://jervin1616.github.io/ILMHandyMan/" target="_blank" rel="noopener noreferrer"
-               class="btn btn-primary">
-              Visit Live Site <i class="fa-solid fa-arrow-up-right-from-square"></i>
-            </a>
-          </div>
-        </div>
-
-        <!-- ---- LIVE PROJECT: Coastal Clean Co ---- -->
-        <div class="portfolio-card reveal reveal-delay-3">
-          <div class="portfolio-thumb" style="background:#E8F4FD;">
-            <!-- ⚠ SCREENSHOT NEEDED: https://jervin1616.github.io/Coastal-Clean-Co/ -->
-            <img src="assets/images/screenshots/coastal-clean-co.jpg"
-                 alt="Coastal Clean Co website screenshot"
-                 onerror="this.parentElement.innerHTML='<span style=\'font-size:0.9rem;color:#4a6fa5;padding:1rem;text-align:center;\'>✨ Screenshot<br>Coastal Clean Co</span>';" />
-          </div>
-          <div class="portfolio-card-body">
-            <span class="portfolio-tag">Home Services</span>
-            <span class="portfolio-category">Residential Cleaning &middot; Wilmington, NC</span>
-            <h3>Coastal Clean Co</h3>
-            <p>
-              Full service business site with quote request flow, service pages,
-              and team section. Bright, lead-gen focused design built for
-              residential service companies.
-            </p>
-            <a href="https://jervin1616.github.io/Coastal-Clean-Co/" target="_blank" rel="noopener noreferrer"
-               class="btn btn-primary">
-              Visit Live Site <i class="fa-solid fa-arrow-up-right-from-square"></i>
-            </a>
-          </div>
-        </div>
-
-        <!-- ---- LIVE PROJECT: Saltline Co ---- -->
-        <div class="portfolio-card reveal reveal-delay-4">
-          <div class="portfolio-thumb" style="background:#F2EDE4;">
-            <!-- ⚠ SCREENSHOT NEEDED: https://jervin1616.github.io/Saltline-Co/ -->
-            <img src="assets/images/screenshots/saltline-co.jpg"
-                 alt="Saltline Co website screenshot"
-                 onerror="this.parentElement.innerHTML='<span style=\'font-size:0.9rem;color:#4a6fa5;padding:1rem;text-align:center;\'>🌊 Screenshot<br>Saltline Co</span>';" />
-          </div>
-          <div class="portfolio-card-body" style="position:relative;">
-            <span class="portfolio-tag" style="background:rgba(0,119,182,0.12);color:#0077b6;border-color:rgba(0,119,182,0.3);">E-Commerce</span>
-            <span class="portfolio-category">E-Commerce &middot; Lifestyle Brand &middot; Wilmington, NC</span>
-            <h3>Saltline Co</h3>
-            <p>
-              Full e-commerce storefront with functional cart, product filtering,
-              sort, quick-add, and product detail pages. React + Tailwind CSS.
-              Demonstrates online store capability at the $3,000–$5,000 tier.
-            </p>
-            <a href="https://jervin1616.github.io/Saltline-Co/" target="_blank" rel="noopener noreferrer"
-               class="btn btn-primary">
-              Visit Live Site <i class="fa-solid fa-arrow-up-right-from-square"></i>
-            </a>
-          </div>
-        </div>
-
-        <!-- ---- PLACEHOLDER 1 ---- -->
-        <div class="portfolio-card portfolio-card-placeholder reveal reveal-delay-1">
-          <div class="portfolio-thumb portfolio-thumb-placeholder">
-            <i class="fa-solid fa-image portfolio-placeholder-icon"></i>
-          </div>
-          <div class="portfolio-card-body">
-            <span class="portfolio-category">Your Industry &middot; Your City</span>
-            <h3>Your Project Here</h3>
-            <p>
-              This could be your business. We build professional websites for
-              contractors, cleaners, tradespeople, shops, and more.
-            </p>
-            <a href="intake.html" class="btn btn-outline-navy">
-              <i class="fa-solid fa-plus"></i> Start Your Project
-            </a>
-          </div>
-        </div>
-
-        <!-- ---- PLACEHOLDER 2 ---- -->
-        <div class="portfolio-card portfolio-card-placeholder reveal reveal-delay-1">
-          <div class="portfolio-thumb portfolio-thumb-placeholder">
-            <i class="fa-solid fa-image portfolio-placeholder-icon"></i>
-          </div>
-          <div class="portfolio-card-body">
-            <span class="portfolio-category">Your Industry &middot; Your City</span>
-            <h3>Your Project Here</h3>
-            <p>
-              More work coming soon. Every client we take on gets a site designed
-              specifically for their business — no cookie-cutter templates.
-            </p>
-            <a href="intake.html" class="btn btn-outline-navy">
-              <i class="fa-solid fa-plus"></i> Start Your Project
-            </a>
-          </div>
-        </div>
-
-        <!-- ---- PLACEHOLDER 3 ---- -->
-        <div class="portfolio-card portfolio-card-placeholder reveal reveal-delay-1">
-          <div class="portfolio-thumb portfolio-thumb-placeholder">
-            <i class="fa-solid fa-image portfolio-placeholder-icon"></i>
-          </div>
-          <div class="portfolio-card-body">
-            <span class="portfolio-category">Your Industry &middot; Your City</span>
-            <h3>Your Project Here</h3>
-            <p>
-              Want to see your business featured here? Get in touch — we'd love
-              to build something great for you.
-            </p>
-            <a href="intake.html" class="btn btn-outline-navy">
-              <i class="fa-solid fa-plus"></i> Start Your Project
-            </a>
-          </div>
-        </div>
-
       </div>
-    </div>
-  </section>
 
-  <!-- ===================== CTA BANNER ===================== -->
-  <section class="cta-banner">
-    <div class="container text-center">
-      <span class="section-label reveal" style="display:block;margin-bottom:0.5rem;">Get Featured</span>
-      <h2 class="reveal">Want Your Business in This Portfolio?</h2>
-      <p class="reveal" style="color:rgba(255,255,255,0.68);max-width:500px;margin:0 auto 2rem;">
-        Every client gets a professional site they're proud of — and a spot right here.
-        Let's build something together.
-      </p>
-      <div class="cta-actions reveal">
-        <a href="intake.html" class="btn btn-primary btn-lg">
-          <i class="fa-solid fa-paper-plane"></i> Start Your Project
-        </a>
-        <a href="services.html" class="btn btn-outline btn-lg">
-          <i class="fa-solid fa-list"></i> View Services &amp; Pricing
-        </a>
+      <!-- ---- SECTION 2: Concept Projects ---- -->
+      <div class="portfolio-section">
+        <h2 class="portfolio-section-heading">Concept Projects</h2>
+        <p class="portfolio-section-intro">
+          Built to demonstrate capability across industries.<br>
+          Same process, same quality as every client project.
+        </p>
+        <div class="portfolio-grid">
+
+          <!-- Cape Fear Collective -->
+          <div class="portfolio-card reveal reveal-delay-1">
+            <div class="portfolio-thumb" style="background:#1a1714;">
+              <!-- ⚠ SCREENSHOT NEEDED: https://jervin1616.github.io/Cape-Fear-Collective/ -->
+              <img src="assets/images/screenshots/cape-fear-collective.jpg"
+                   alt="Cape Fear Collective website screenshot"
+                   onerror="this.parentElement.innerHTML='<span style=\'font-family:Georgia,serif;font-style:italic;font-size:0.9rem;color:rgba(255,255,255,0.6);padding:1rem;text-align:center;\'>📷 Screenshot<br>Cape Fear Collective</span>';" />
+            </div>
+            <div class="portfolio-card-body">
+              <span class="badge-pill badge-concept">Concept Project</span>
+              <span class="portfolio-tag">Photography Studio</span>
+              <span class="portfolio-category">Wedding Photography &middot; Wilmington, NC</span>
+              <h3>Cape Fear Collective</h3>
+              <p>
+                Premium wedding photography studio site. React + Tailwind CSS. Luxury
+                editorial aesthetic with filterable portfolio gallery, investment
+                packages, FAQ accordion, and inquiry form.
+              </p>
+              <a href="https://jervin1616.github.io/Cape-Fear-Collective/" target="_blank" rel="noopener noreferrer"
+                 class="btn btn-primary">
+                Visit Live Site <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- ILM Handyman -->
+          <div class="portfolio-card reveal reveal-delay-2">
+            <div class="portfolio-thumb" style="background:#2b2b2b;">
+              <!-- ⚠ SCREENSHOT NEEDED: https://jervin1616.github.io/ILMHandyMan/ -->
+              <img src="assets/images/screenshots/ilm-handyman.jpg"
+                   alt="ILM Handyman website screenshot"
+                   onerror="this.parentElement.innerHTML='<span style=\'font-size:0.9rem;color:rgba(255,255,255,0.6);padding:1rem;text-align:center;\'>⚒ Screenshot<br>ILM Handyman</span>';" />
+            </div>
+            <div class="portfolio-card-body">
+              <span class="badge-pill badge-concept">Concept Project</span>
+              <span class="portfolio-tag">Home Services</span>
+              <span class="portfolio-category">General Contracting &middot; Wilmington, NC</span>
+              <h3>ILM Handyman</h3>
+              <p>
+                Full contractor site with services, about, and quote request form.
+                Dark, trust-heavy design built for the trades market.
+              </p>
+              <a href="https://jervin1616.github.io/ILMHandyMan/" target="_blank" rel="noopener noreferrer"
+                 class="btn btn-primary">
+                Visit Live Site <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Coastal Clean Co -->
+          <div class="portfolio-card reveal reveal-delay-3">
+            <div class="portfolio-thumb" style="background:#E8F4FD;">
+              <!-- ⚠ SCREENSHOT NEEDED: https://jervin1616.github.io/Coastal-Clean-Co/ -->
+              <img src="assets/images/screenshots/coastal-clean-co.jpg"
+                   alt="Coastal Clean Co website screenshot"
+                   onerror="this.parentElement.innerHTML='<span style=\'font-size:0.9rem;color:#4a6fa5;padding:1rem;text-align:center;\'>✨ Screenshot<br>Coastal Clean Co</span>';" />
+            </div>
+            <div class="portfolio-card-body">
+              <span class="badge-pill badge-concept">Concept Project</span>
+              <span class="portfolio-tag">Home Services</span>
+              <span class="portfolio-category">Residential Cleaning &middot; Wilmington, NC</span>
+              <h3>Coastal Clean Co</h3>
+              <p>
+                Full service business site with quote request flow, service pages,
+                and team section. Bright, lead-gen focused design built for
+                residential service companies.
+              </p>
+              <a href="https://jervin1616.github.io/Coastal-Clean-Co/" target="_blank" rel="noopener noreferrer"
+                 class="btn btn-primary">
+                Visit Live Site <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Saltline Co -->
+          <div class="portfolio-card reveal reveal-delay-4">
+            <div class="portfolio-thumb" style="background:#F2EDE4;">
+              <!-- ⚠ SCREENSHOT NEEDED: https://jervin1616.github.io/Saltline-Co/ -->
+              <img src="assets/images/screenshots/saltline-co.jpg"
+                   alt="Saltline Co website screenshot"
+                   onerror="this.parentElement.innerHTML='<span style=\'font-size:0.9rem;color:#4a6fa5;padding:1rem;text-align:center;\'>🌊 Screenshot<br>Saltline Co</span>';" />
+            </div>
+            <div class="portfolio-card-body" style="position:relative;">
+              <span class="badge-pill badge-concept">Concept Project</span>
+              <span class="portfolio-tag" style="background:rgba(0,119,182,0.12);color:#0077b6;border-color:rgba(0,119,182,0.3);">E-Commerce</span>
+              <span class="portfolio-category">E-Commerce &middot; Lifestyle Brand &middot; Wilmington, NC</span>
+              <h3>Saltline Co</h3>
+              <p>
+                Full e-commerce storefront with functional cart, product filtering,
+                sort, quick-add, and product detail pages. React + Tailwind CSS.
+                Demonstrates online store capability at the $3,000–$5,000 tier.
+              </p>
+              <a href="https://jervin1616.github.io/Saltline-Co/" target="_blank" rel="noopener noreferrer"
+                 class="btn btn-primary">
+                Visit Live Site <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+            </div>
+          </div>
+
+        </div>
       </div>
+
+      <!-- ---- CTA ---- -->
+      <div style="text-align:center;margin-top:3rem;padding-bottom:0.5rem;">
+        <a href="intake.html" class="btn btn-primary btn-lg">Start Your Project</a>
+      </div>
+
     </div>
   </section>
 
