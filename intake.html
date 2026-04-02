@@ -3,179 +3,293 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>New Client Intake — Rising Tide Digital LLC</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/png" href="assets/images/favicon.png" />
+  <title>New Client Intake — Rising Tide Digital, LLC</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg:           #f5f7fa;
-      --card:         #ffffff;
-      --ink:          #0d1b2e;
-      --ink-muted:    #627d98;
-      --ink-faint:    #9aa5b4;
-      --navy:         #0d1b2e;
-      --navy-mid:     #162840;
-      --gold:         #c9a443;
-      --gold-light:   #e0bc5a;
-      --gold-pale:    #f5e9c6;
-      --accent-light: #eef2f7;
-      --border:       #e2e5ea;
-      --border-strong:#c5cad2;
-      --radius:       10px;
-      --radius-sm:    6px;
+      --navy:      #0D1B2A;
+      --navy-mid:  #1A2E45;
+      --navy-light:#243B55;
+      --gold:      #C9A84C;
+      --gold-light:#E2C97E;
+      --gold-faint:#F5EDD6;
+      --gold-dim:  #8B6F2E;
+      --cream:     #F8F4EC;
+      --white:     #FFFFFF;
+      --ink:       #0D1B2A;
+      --ink-muted: #4A5A6B;
+      --ink-faint: #8A9BB0;
+      --border:    #D8CEB8;
+      --border-gold: #C9A84C;
+      --success:   #2A6644;
+      --radius:    12px;
+      --radius-sm: 8px;
     }
 
     body {
-      font-family: 'Inter', system-ui, sans-serif;
-      background: var(--bg);
+      font-family: 'Raleway', sans-serif;
+      background: var(--cream);
       color: var(--ink);
       min-height: 100vh;
-      padding: 3rem 1rem;
+      padding: 0 0 4rem;
       line-height: 1.6;
     }
 
-    .page-wrap {
-      max-width: 700px;
-      margin: 0 auto;
-    }
-
-    /* ---- Header ---- */
+    /* ─── HEADER ─── */
     .page-header {
-      margin-bottom: 2.5rem;
-      padding-bottom: 2rem;
-      border-bottom: 1px solid var(--border);
+      background: var(--navy);
+      padding: 2.5rem 1.5rem 3rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
     }
 
-    .logo-lockup {
-      display: flex;
+    .page-header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(201,168,76,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .header-rope {
+      width: 100%;
+      height: 3px;
+      background: repeating-linear-gradient(90deg, var(--gold) 0px, var(--gold) 6px, transparent 6px, transparent 10px);
+      position: absolute;
+      bottom: 0; left: 0;
+      opacity: 0.6;
+    }
+
+    .logo-wrap {
+      display: inline-flex;
       align-items: center;
-      gap: 12px;
-      margin-bottom: 1.75rem;
-      text-decoration: none;
+      gap: 14px;
+      margin-bottom: 1.5rem;
     }
 
-    .logo-lockup img {
-      height: 52px;
-      width: auto;
+    .logo-img {
+      width: 72px;
+      height: 72px;
+      object-fit: contain;
+      filter: drop-shadow(0 2px 12px rgba(201,168,76,0.35));
     }
 
-    .logo-text-wrap {
-      display: flex;
-      flex-direction: column;
-      line-height: 1.2;
+    .logo-text {
+      text-align: left;
     }
 
-    .logo-name {
-      font-family: 'Cinzel', Georgia, serif;
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--navy);
-      letter-spacing: 0.05em;
-    }
-
-    .logo-sub {
-      font-size: 0.65rem;
-      font-weight: 500;
-      color: var(--gold);
+    .logo-text .brand-name {
+      font-family: 'Cinzel', serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--gold-light);
       letter-spacing: 0.12em;
-      text-transform: uppercase;
+      line-height: 1.1;
+      display: block;
+    }
+
+    .logo-text .brand-sub {
+      font-family: 'Cinzel', serif;
+      font-size: 11px;
+      font-weight: 400;
+      color: rgba(201,168,76,0.65);
+      letter-spacing: 0.22em;
+      display: block;
+      margin-top: 2px;
     }
 
     .page-header h1 {
       font-family: 'Cinzel', serif;
-      font-size: 1.75rem;
+      font-size: clamp(22px, 4vw, 30px);
       font-weight: 600;
-      color: var(--navy);
-      letter-spacing: 0.02em;
-      line-height: 1.3;
+      color: var(--white);
+      letter-spacing: 0.04em;
       margin-bottom: 0.5rem;
     }
 
     .page-header p {
-      font-size: 0.9rem;
-      color: var(--ink-muted);
-      font-weight: 400;
+      font-size: 14px;
+      color: rgba(255,255,255,0.55);
+      font-weight: 300;
+      max-width: 400px;
+      margin: 0 auto;
     }
 
-    /* ---- Progress ---- */
-    .progress-wrap { margin-bottom: 2.5rem; }
+    /* ─── PROGRESS ─── */
+    .progress-outer {
+      background: var(--navy-mid);
+      padding: 1.25rem 1.5rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 20px rgba(13,27,42,0.4);
+    }
 
-    .progress-steps {
+    .progress-meta {
       display: flex;
-      gap: 5px;
-      margin-bottom: 8px;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
     }
-
-    .progress-step {
-      height: 3px;
-      flex: 1;
-      background: var(--border);
-      border-radius: 2px;
-      transition: background 0.3s;
-    }
-
-    .progress-step.active { background: var(--gold); }
 
     .progress-label {
-      font-size: 0.72rem;
-      color: var(--ink-faint);
-      letter-spacing: 0.05em;
+      font-family: 'Cinzel', serif;
+      font-size: 11px;
+      color: var(--gold);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
     }
 
-    /* ---- Form sections ---- */
+    .progress-count {
+      font-size: 12px;
+      color: rgba(255,255,255,0.4);
+      font-weight: 300;
+    }
+
+    .progress-track {
+      height: 4px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 100px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--gold-dim), var(--gold-light));
+      border-radius: 100px;
+      transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 0 10px rgba(201,168,76,0.5);
+    }
+
+    .step-dots {
+      display: flex;
+      gap: 6px;
+      margin-top: 10px;
+      justify-content: center;
+    }
+
+    .step-dot {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(201,168,76,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cinzel', serif;
+      font-size: 11px;
+      color: rgba(255,255,255,0.3);
+      transition: all 0.3s ease;
+      cursor: default;
+    }
+
+    .step-dot.done {
+      background: var(--gold-dim);
+      border-color: var(--gold);
+      color: var(--navy);
+    }
+
+    .step-dot.done::after {
+      content: '✓';
+      font-size: 12px;
+    }
+
+    .step-dot.done span { display: none; }
+
+    .step-dot.active {
+      background: var(--gold);
+      border-color: var(--gold-light);
+      color: var(--navy);
+      box-shadow: 0 0 12px rgba(201,168,76,0.5);
+    }
+
+    /* ─── MAIN WRAP ─── */
+    .page-wrap {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 2rem 1rem 0;
+    }
+
+    /* ─── SECTION CARDS ─── */
     .form-section {
-      background: var(--card);
+      display: none;
+      background: var(--white);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 1.75rem;
-      margin-bottom: 1.25rem;
+      padding: 2rem 1.75rem;
+      animation: sectionIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 4px 30px rgba(13,27,42,0.08);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .form-section::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold-dim), var(--gold-light), var(--gold-dim));
+    }
+
+    .form-section.active {
+      display: block;
+    }
+
+    @keyframes sectionIn {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
     }
 
     .section-header {
       display: flex;
       align-items: center;
-      gap: 10px;
-      margin-bottom: 1.5rem;
-      padding-bottom: 1rem;
+      gap: 12px;
+      margin-bottom: 1.75rem;
+      padding-bottom: 1.25rem;
       border-bottom: 1px solid var(--border);
     }
 
     .section-num {
-      width: 26px;
-      height: 26px;
+      width: 32px;
+      height: 32px;
       background: var(--navy);
       color: var(--gold);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.72rem;
+      font-family: 'Cinzel', serif;
+      font-size: 13px;
       font-weight: 600;
       flex-shrink: 0;
+      border: 1.5px solid var(--gold-dim);
     }
 
     .section-title {
-      font-size: 0.72rem;
+      font-family: 'Cinzel', serif;
+      font-size: 13px;
       font-weight: 600;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--ink-muted);
+      color: var(--navy);
     }
 
-    /* ---- Fields ---- */
-    .field-row  { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
-    .field-full { margin-bottom: 14px; }
+    /* ─── FIELDS ─── */
+    .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+    .field-full { margin-bottom: 16px; }
     .field-row:last-child, .field-full:last-child { margin-bottom: 0; }
 
     .field label {
       display: block;
-      font-size: 0.78rem;
+      font-size: 12px;
       font-weight: 600;
       color: var(--ink-muted);
-      margin-bottom: 5px;
-      letter-spacing: 0.02em;
+      margin-bottom: 6px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
     }
 
     .field input[type="text"],
@@ -185,15 +299,15 @@
     .field select,
     .field textarea {
       width: 100%;
-      padding: 9px 13px;
-      font-family: 'Inter', sans-serif;
-      font-size: 0.875rem;
+      padding: 10px 14px;
+      font-family: 'Raleway', sans-serif;
+      font-size: 14px;
       color: var(--ink);
-      background: var(--bg);
-      border: 1.5px solid var(--border);
+      background: var(--cream);
+      border: 1px solid var(--border);
       border-radius: var(--radius-sm);
       outline: none;
-      transition: border-color 0.2s, background 0.2s;
+      transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
       -webkit-appearance: none;
     }
 
@@ -202,27 +316,37 @@
     .field textarea:focus {
       border-color: var(--gold);
       background: #fff;
-      box-shadow: 0 0 0 3px rgba(201,164,67,0.12);
+      box-shadow: 0 0 0 3px rgba(201,168,76,0.12);
     }
 
     .field input::placeholder,
-    .field textarea::placeholder { color: var(--ink-faint); }
+    .field textarea::placeholder { color: var(--ink-faint); font-weight: 300; }
 
-    .field textarea { resize: vertical; min-height: 80px; line-height: 1.55; }
+    .field textarea { resize: vertical; min-height: 80px; line-height: 1.5; }
 
     .field select {
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%239aa5b4' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%234A5A6B' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
       background-repeat: no-repeat;
       background-position: right 12px center;
       padding-right: 32px;
       cursor: pointer;
     }
 
-    /* ---- Pill options (radio) ---- */
+    /* ─── PILLS ─── */
+    .field-group-label {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--ink-muted);
+      margin-bottom: 10px;
+      display: block;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
     .pill-group {
       display: flex;
       flex-wrap: wrap;
-      gap: 7px;
+      gap: 8px;
       margin-top: 2px;
     }
 
@@ -231,32 +355,33 @@
 
     .pill-option span {
       display: inline-block;
-      padding: 6px 14px;
-      font-size: 0.8rem;
-      font-weight: 400;
+      padding: 7px 16px;
+      font-size: 13px;
+      font-weight: 500;
       color: var(--ink-muted);
-      background: var(--bg);
+      background: var(--cream);
       border: 1.5px solid var(--border);
       border-radius: 100px;
       cursor: pointer;
-      transition: all 0.15s;
+      transition: all 0.15s ease;
       user-select: none;
     }
 
     .pill-option input:checked + span {
-      background: rgba(201,164,67,0.12);
+      background: var(--navy);
       border-color: var(--gold);
-      color: var(--navy);
+      color: var(--gold-light);
       font-weight: 600;
+      box-shadow: 0 2px 10px rgba(13,27,42,0.15);
     }
 
-    .pill-option span:hover { border-color: var(--border-strong); color: var(--ink); }
+    .pill-option span:hover { border-color: var(--gold-dim); color: var(--navy); }
 
-    /* ---- Checkbox grid ---- */
+    /* ─── CHECKBOXES ─── */
     .check-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
-      gap: 7px;
+      gap: 8px;
       margin-top: 4px;
     }
 
@@ -264,8 +389,8 @@
       display: flex;
       align-items: center;
       gap: 9px;
-      padding: 8px 10px;
-      background: var(--bg);
+      padding: 8px 12px;
+      background: var(--cream);
       border: 1.5px solid var(--border);
       border-radius: var(--radius-sm);
       cursor: pointer;
@@ -273,19 +398,26 @@
       user-select: none;
     }
 
-    .check-item:hover { border-color: var(--border-strong); }
+    .check-item:hover { border-color: var(--gold-dim); }
+
     .check-item input[type="checkbox"] { display: none; }
 
     .check-box {
       width: 16px;
       height: 16px;
-      border: 1.5px solid var(--border-strong);
+      border: 1.5px solid var(--border);
       border-radius: 4px;
       flex-shrink: 0;
       display: flex;
       align-items: center;
       justify-content: center;
       transition: all 0.15s;
+      background: white;
+    }
+
+    .check-item:has(input:checked) {
+      background: var(--navy);
+      border-color: var(--gold);
     }
 
     .check-item:has(input:checked) .check-box {
@@ -293,13 +425,8 @@
       border-color: var(--gold);
     }
 
-    .check-item:has(input:checked) {
-      background: rgba(201,164,67,0.10);
-      border-color: var(--gold);
-    }
-
     .check-item:has(input:checked) .check-label {
-      color: var(--navy);
+      color: var(--gold-light);
       font-weight: 600;
     }
 
@@ -313,24 +440,79 @@
     }
 
     .check-item:has(input:checked) .check-box-inner { opacity: 1; }
-    .check-label { font-size: 0.8rem; color: var(--ink-muted); transition: color 0.15s; }
 
-    /* ---- Group label ---- */
-    .field-group-label {
-      font-size: 0.78rem;
-      font-weight: 600;
-      color: var(--ink-muted);
-      margin-bottom: 8px;
-      display: block;
-      letter-spacing: 0.02em;
+    .check-label { font-size: 13px; color: var(--ink-muted); transition: color 0.15s; }
+
+    /* ─── NAV BUTTONS ─── */
+    .nav-buttons {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 2rem;
+      gap: 12px;
     }
 
-    /* ---- Submit section ---- */
+    .btn-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 22px;
+      font-family: 'Raleway', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--ink-muted);
+      background: transparent;
+      border: 1.5px solid var(--border);
+      border-radius: 100px;
+      cursor: pointer;
+      transition: all 0.2s;
+      letter-spacing: 0.04em;
+    }
+
+    .btn-back:hover {
+      border-color: var(--gold-dim);
+      color: var(--navy);
+    }
+
+    .btn-next {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 28px;
+      font-family: 'Cinzel', serif;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--navy);
+      background: linear-gradient(135deg, var(--gold-light), var(--gold));
+      border: none;
+      border-radius: 100px;
+      cursor: pointer;
+      transition: all 0.2s;
+      letter-spacing: 0.06em;
+      box-shadow: 0 4px 16px rgba(201,168,76,0.3);
+    }
+
+    .btn-next:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(201,168,76,0.4);
+    }
+
+    .btn-next:active { transform: translateY(0); }
+
+    .btn-arrow {
+      display: inline-block;
+      transition: transform 0.2s;
+    }
+
+    .btn-next:hover .btn-arrow { transform: translateX(3px); }
+
+    /* ─── SUBMIT SECTION ─── */
     .submit-section {
-      background: linear-gradient(135deg, var(--navy) 0%, #1e3a5f 100%);
+      background: var(--navy);
       border-radius: var(--radius);
       padding: 2rem 1.75rem;
       margin-bottom: 1.25rem;
+      border: 1px solid var(--gold-dim);
       position: relative;
       overflow: hidden;
     }
@@ -338,333 +520,556 @@
     .submit-section::before {
       content: '';
       position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse at 20% 50%, rgba(201,164,67,0.10) 0%, transparent 60%);
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--gold-dim), var(--gold-light), var(--gold-dim));
     }
 
     .submit-section p {
-      font-size: 0.875rem;
-      color: rgba(255,255,255,0.70);
+      font-size: 14px;
+      color: rgba(255,255,255,0.6);
       margin-bottom: 1.5rem;
-      font-weight: 400;
-      line-height: 1.65;
-      position: relative;
-      z-index: 1;
+      font-weight: 300;
+      line-height: 1.7;
     }
 
     .submit-btn {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 11px 28px;
-      font-family: 'Inter', sans-serif;
-      font-size: 0.9rem;
+      padding: 14px 32px;
+      font-family: 'Cinzel', serif;
+      font-size: 14px;
       font-weight: 600;
       color: var(--navy);
-      background: var(--gold);
+      background: linear-gradient(135deg, var(--gold-light), var(--gold));
       border: none;
       border-radius: 100px;
       cursor: pointer;
-      transition: background 0.2s, transform 0.15s;
-      position: relative;
-      z-index: 1;
+      transition: all 0.2s;
+      letter-spacing: 0.06em;
+      box-shadow: 0 4px 20px rgba(201,168,76,0.4);
     }
 
-    .submit-btn:hover { background: var(--gold-light); transform: translateY(-2px); }
-    .submit-btn:active { transform: translateY(0); }
+    .submit-btn:hover {
+      opacity: 0.95;
+      transform: translateY(-1px);
+      box-shadow: 0 8px 24px rgba(201,168,76,0.5);
+    }
 
-    .submit-arrow { display: inline-block; transition: transform 0.2s; }
+    .submit-arrow {
+      display: inline-block;
+      transition: transform 0.2s;
+    }
+
     .submit-btn:hover .submit-arrow { transform: translateX(3px); }
 
-    .required-note {
-      font-size: 0.72rem;
-      color: rgba(255,255,255,0.35);
-      margin-top: 0.75rem;
-      position: relative;
-      z-index: 1;
-    }
-
-    /* ---- Footer ---- */
+    /* ─── FOOTER ─── */
     .page-footer {
       text-align: center;
-      padding-top: 1.5rem;
-      padding-bottom: 2rem;
-      font-size: 0.75rem;
+      padding-top: 2rem;
+      font-size: 12px;
       color: var(--ink-faint);
     }
 
-    .page-footer a {
-      color: var(--gold);
-      text-decoration: none;
+    .page-footer a { color: var(--gold-dim); text-decoration: none; }
+
+    /* ─── DIVIDER ─── */
+    .field-divider {
+      height: 1px;
+      background: var(--border);
+      margin: 18px 0;
+      opacity: 0.5;
     }
 
-    /* ---- Responsive ---- */
+    /* ─── RESPONSIVE ─── */
     @media (max-width: 520px) {
       .field-row { grid-template-columns: 1fr; }
-      body { padding: 1.5rem 0.75rem; }
-      .form-section { padding: 1.25rem; }
+      body { padding-bottom: 2rem; }
+      .form-section { padding: 1.5rem 1.25rem; }
+      .page-header { padding: 2rem 1rem 2.5rem; }
+      .logo-wrap { flex-direction: column; text-align: center; }
+      .logo-text { text-align: center; }
+      .step-dots { gap: 4px; }
+      .step-dot { width: 24px; height: 24px; font-size: 10px; }
     }
   </style>
 </head>
 <body>
 
-<div class="page-wrap">
-
-  <div class="page-header">
-    <a href="index.html" class="logo-lockup">
-      <img src="assets/images/logo.png" alt="Rising Tide Digital LLC" />
-      <div class="logo-text-wrap">
-        <span class="logo-name">Rising Tide Digital</span>
-        <span class="logo-sub">LLC &mdash; Wilmington, NC</span>
-      </div>
-    </a>
-    <h1>New Client Intake</h1>
-    <p>Tell us about your project and we'll follow up within 1 business day with a clear, flat-rate quote.</p>
+<!-- ═══ HEADER ═══ -->
+<div class="page-header">
+  <div class="logo-wrap">
+    <img src="logo-removebg-preview.png" alt="Rising Tide Digital Logo" class="logo-img"
+         onerror="this.style.display='none'">
+    <div class="logo-text">
+      <span class="brand-name">RISING TIDE</span>
+      <span class="brand-sub">DIGITAL, LLC</span>
+    </div>
   </div>
-
-  <div class="progress-wrap">
-    <div class="progress-steps">
-      <div class="progress-step active"></div>
-      <div class="progress-step active"></div>
-      <div class="progress-step active"></div>
-      <div class="progress-step active"></div>
-      <div class="progress-step active"></div>
-      <div class="progress-step active"></div>
-    </div>
-    <span class="progress-label">6 sections &mdash; about 5 minutes</span>
-  </div>
-
-  <form id="intakeForm" action="https://api.web3forms.com/submit" method="POST" novalidate>
-
-      <!-- Web3Forms configuration -->
-      <input type="hidden" name="access_key" value="4afb9b32-d081-4b5b-94d3-98470c9b4e49" />
-      <input type="hidden" name="subject" value="New Inquiry — Rising Tide Digital" />
-      <input type="hidden" name="redirect" value="https://jervin1616.github.io/RisingTideDigital/thanks.html" />
-
-    <!-- 1: Contact Info -->
-    <div class="form-section">
-      <div class="section-header">
-        <div class="section-num">1</div>
-        <span class="section-title">Contact Info</span>
-      </div>
-      <div class="field-row">
-        <div class="field"><label for="fname">First name *</label><input type="text" id="fname" name="fname" placeholder="Jane" required /></div>
-        <div class="field"><label for="lname">Last name *</label><input type="text" id="lname" name="lname" placeholder="Smith" required /></div>
-      </div>
-      <div class="field-row">
-        <div class="field"><label for="email">Email *</label><input type="email" id="email" name="email" placeholder="jane@yourbusiness.com" required /></div>
-        <div class="field"><label for="phone">Phone</label><input type="tel" id="phone" name="phone" placeholder="(910) 555-0100" /></div>
-      </div>
-      <div class="field-row">
-        <div class="field"><label for="bizname">Business name *</label><input type="text" id="bizname" name="bizname" placeholder="Smith Consulting LLC" required /></div>
-        <div class="field"><label for="industry">Industry</label><input type="text" id="industry" name="industry" placeholder="e.g. Salon, Contractor, Law…" /></div>
-      </div>
-    </div>
-
-    <!-- 2: Your Website -->
-    <div class="form-section">
-      <div class="section-header">
-        <div class="section-num">2</div>
-        <span class="section-title">Your Website</span>
-      </div>
-
-      <div class="field-full">
-        <span class="field-group-label">Do you already have a website?</span>
-        <div class="pill-group">
-          <label class="pill-option"><input type="radio" name="has_site" value="Yes, I need a redesign"><span>Yes — need a redesign</span></label>
-          <label class="pill-option"><input type="radio" name="has_site" value="No, starting fresh"><span>No — starting fresh</span></label>
-          <label class="pill-option"><input type="radio" name="has_site" value="Have a domain, no site yet"><span>Have a domain, no site yet</span></label>
-        </div>
-      </div>
-
-      <div class="field-full" style="margin-top:14px;">
-        <div class="field"><label for="current_url">Current website URL (if any)</label><input type="url" id="current_url" name="current_url" placeholder="https://yourbusiness.com" /></div>
-      </div>
-
-      <div class="field-full">
-        <span class="field-group-label">Main goal for the website</span>
-        <div class="pill-group">
-          <label class="pill-option"><input type="radio" name="goal" value="Show info and credibility"><span>Show info / credibility</span></label>
-          <label class="pill-option"><input type="radio" name="goal" value="Generate leads and calls"><span>Generate leads / calls</span></label>
-          <label class="pill-option"><input type="radio" name="goal" value="Online bookings"><span>Online bookings</span></label>
-          <label class="pill-option"><input type="radio" name="goal" value="Sell products"><span>Sell products</span></label>
-          <label class="pill-option"><input type="radio" name="goal" value="Other"><span>Other</span></label>
-        </div>
-      </div>
-
-      <div class="field-full" style="margin-top:14px;">
-        <div class="field"><label for="audience">Who is your target audience?</label><input type="text" id="audience" name="audience" placeholder="e.g. Local homeowners, small businesses, parents in Wilmington…" /></div>
-      </div>
-    </div>
-
-    <!-- 3: Pages & Features -->
-    <div class="form-section">
-      <div class="section-header">
-        <div class="section-num">3</div>
-        <span class="section-title">Pages &amp; Features</span>
-      </div>
-
-      <div class="field-full">
-        <span class="field-group-label">Pages you need (select all that apply)</span>
-        <div class="check-grid">
-          <label class="check-item"><input type="checkbox" name="pages" value="Home"><div class="check-box"><div class="check-box-inner"></div></div><span class="check-label">Home</span></label>
-          <label class="check-item"><input type="checkbox" name="pages" value="About"><div class="check-box"><div class="check-box-inner"></div></div><span class="check-label">About</span></label>
-          <label class="check-item"><input type="checkbox" name="pages" value="Services"><div class="check-box"><div class="check-box-inner"></div></div><span class="check-label">Services</span></label>
-          <label class="check-item"><input type="checkbox" name="pages" value="Contact"><div class="check-box"><div class="check-box-inner"></div></div><span class="check-label">Contact</span></label>
-          <label class="check-item"><input type="checkbox" name="pages" value="Portfolio / Gallery"><div class="check-box"><div class="check-box-inner"></div></div><span class="check-label">Portfolio / Gallery</span></label>
-          <label class="check-item"><input type="checkbox" name="pages" value="Blog"><div class="check-box"><div class="check-box-inner"></div></div><span class="check-label">Blog</span></label>
-          <label class="check-item"><input type="checkbox" name="pages" value="Testimonials"><div class="check-box"><div class="check-box-inner"></div></div><span class="check-label">Testimonials</span></label>
-          <label class="check-item"><input type="checkbox" name="pages" value="FAQ"><div class="check-box"><div class="check-box-inner"></div></div><span class="check-label">FAQ</span></label>
-          <label class="check-item"><input type="checkbox" name="pages" value="Booking / Scheduling"><div class="check-box"><div class="check-box-inner"></div></div><span class="check-label">Booking / Scheduling</span></label>
-          <label class="check-item"><input type="checkbox" name="pages" value="Shop / Products"><div class="check-box"><div class="check-box-inner"></div></div><span class="check-label">Shop / Products</span></label>
-          <label class="check-item"><input type="checkbox" name="pages" value="Team page"><div class="check-box"><div class="check-box-inner"></div></div><span class="check-label">Team page</span></label>
-        </div>
-      </div>
-
-      <div class="field-full" style="margin-top:14px;">
-        <div class="field"><label for="features">Special features needed</label><textarea id="features" name="features" placeholder="e.g. Contact form, appointment calendar, newsletter signup, map, live chat…"></textarea></div>
-      </div>
-    </div>
-
-    <!-- 4: Brand & Design -->
-    <div class="form-section">
-      <div class="section-header">
-        <div class="section-num">4</div>
-        <span class="section-title">Brand &amp; Design</span>
-      </div>
-
-      <div class="field-full">
-        <span class="field-group-label">Do you have a logo?</span>
-        <div class="pill-group">
-          <label class="pill-option"><input type="radio" name="logo" value="Yes, I have one"><span>Yes, I have one</span></label>
-          <label class="pill-option"><input type="radio" name="logo" value="No, I need one"><span>No — need one (add-on)</span></label>
-          <label class="pill-option"><input type="radio" name="logo" value="Have one, needs updating"><span>Have one, needs updating</span></label>
-        </div>
-      </div>
-
-      <div class="field-row" style="margin-top:14px;">
-        <div class="field"><label for="colors">Brand colors (if known)</label><input type="text" id="colors" name="colors" placeholder="e.g. Navy blue and white" /></div>
-        <div class="field"><label for="fonts">Brand fonts (if known)</label><input type="text" id="fonts" name="fonts" placeholder="e.g. Not sure / Georgia" /></div>
-      </div>
-
-      <div class="field-full">
-        <div class="field"><label for="inspo">3 websites you like (design reference)</label><textarea id="inspo" name="inspo" placeholder="Paste URLs or describe what you like about them…"></textarea></div>
-      </div>
-
-      <div class="field-full">
-        <span class="field-group-label">Overall vibe</span>
-        <div class="pill-group">
-          <label class="pill-option"><input type="radio" name="vibe" value="Clean and minimal"><span>Clean &amp; minimal</span></label>
-          <label class="pill-option"><input type="radio" name="vibe" value="Bold and modern"><span>Bold &amp; modern</span></label>
-          <label class="pill-option"><input type="radio" name="vibe" value="Warm and friendly"><span>Warm &amp; friendly</span></label>
-          <label class="pill-option"><input type="radio" name="vibe" value="Corporate / professional"><span>Corporate / professional</span></label>
-          <label class="pill-option"><input type="radio" name="vibe" value="Creative / artistic"><span>Creative / artistic</span></label>
-        </div>
-      </div>
-    </div>
-
-    <!-- 5: Content -->
-    <div class="form-section">
-      <div class="section-header">
-        <div class="section-num">5</div>
-        <span class="section-title">Content</span>
-      </div>
-
-      <div class="field-full">
-        <span class="field-group-label">Who will write the website copy (text)?</span>
-        <div class="pill-group">
-          <label class="pill-option"><input type="radio" name="copy" value="Client will provide copy"><span>I will provide it</span></label>
-          <label class="pill-option"><input type="radio" name="copy" value="Need help writing copy (add-on)"><span>Need help writing it (add-on)</span></label>
-          <label class="pill-option"><input type="radio" name="copy" value="Mix of both for copy"><span>Mix of both</span></label>
-        </div>
-      </div>
-
-      <div class="field-full" style="margin-top:14px;">
-        <span class="field-group-label">Who will provide photos / images?</span>
-        <div class="pill-group">
-          <label class="pill-option"><input type="radio" name="photos" value="Client has own photos"><span>I have my own photos</span></label>
-          <label class="pill-option"><input type="radio" name="photos" value="Use stock photos (add-on)"><span>Use stock photos (add-on)</span></label>
-          <label class="pill-option"><input type="radio" name="photos" value="Mix of own and stock photos"><span>Mix of both</span></label>
-        </div>
-      </div>
-    </div>
-
-    <!-- 6: Budget & Timeline -->
-    <div class="form-section">
-      <div class="section-header">
-        <div class="section-num">6</div>
-        <span class="section-title">Budget, Timeline &amp; Anything Else</span>
-      </div>
-
-      <div class="field-full">
-        <span class="field-group-label">Estimated budget range</span>
-        <div class="pill-group">
-          <label class="pill-option"><input type="radio" name="budget" value="Under $500"><span>Under $500</span></label>
-          <label class="pill-option"><input type="radio" name="budget" value="$500 – $1,000"><span>$500 – $1,000</span></label>
-          <label class="pill-option"><input type="radio" name="budget" value="$1,000 – $2,500"><span>$1,000 – $2,500</span></label>
-          <label class="pill-option"><input type="radio" name="budget" value="$2,500 – $5,000"><span>$2,500 – $5,000</span></label>
-          <label class="pill-option"><input type="radio" name="budget" value="Open / let's talk"><span>Open / let's talk</span></label>
-        </div>
-      </div>
-
-      <div class="field-full" style="margin-top:14px;">
-        <span class="field-group-label">When do you need the site live?</span>
-        <div class="pill-group">
-          <label class="pill-option"><input type="radio" name="timeline" value="ASAP (under 2 weeks)"><span>ASAP (under 2 weeks)</span></label>
-          <label class="pill-option"><input type="radio" name="timeline" value="Within a month"><span>Within a month</span></label>
-          <label class="pill-option"><input type="radio" name="timeline" value="Flexible / no rush"><span>Flexible / no rush</span></label>
-        </div>
-      </div>
-
-      <div class="field-full" style="margin-top:14px;">
-        <span class="field-group-label">Interested in ongoing maintenance after launch?</span>
-        <div class="pill-group">
-          <label class="pill-option"><input type="radio" name="maintain" value="Yes, tell me about maintenance"><span>Yes, tell me more</span></label>
-          <label class="pill-option"><input type="radio" name="maintain" value="No, one-time project only"><span>No, one-time project</span></label>
-          <label class="pill-option"><input type="radio" name="maintain" value="Maybe, depends on cost"><span>Maybe — depends on cost</span></label>
-        </div>
-      </div>
-
-      <div class="field-full" style="margin-top:14px;">
-        <span class="field-group-label">How did you hear about us?</span>
-        <div class="pill-group">
-          <label class="pill-option"><input type="radio" name="referral" value="Word of mouth"><span>Word of mouth</span></label>
-          <label class="pill-option"><input type="radio" name="referral" value="TikTok"><span>TikTok</span></label>
-          <label class="pill-option"><input type="radio" name="referral" value="Social media"><span>Social media</span></label>
-          <label class="pill-option"><input type="radio" name="referral" value="Google search"><span>Google search</span></label>
-          <label class="pill-option"><input type="radio" name="referral" value="Referral from a friend"><span>Referral</span></label>
-          <label class="pill-option"><input type="radio" name="referral" value="Other"><span>Other</span></label>
-        </div>
-      </div>
-
-      <div class="field-full" style="margin-top:14px;">
-        <div class="field"><label for="notes">Anything else we should know?</label><textarea id="notes" name="notes" placeholder="Deadlines, past experiences with web designers, specific concerns or questions…"></textarea></div>
-      </div>
-    </div>
-
-    <!-- Submit -->
-    <div class="submit-section">
-      <p>
-        Hit send and we'll receive your intake responses directly. We'll follow up
-        within 1 business day with a clear, flat-rate quote — no pressure.
-      </p>
-      <button type="submit" class="submit-btn">
-        Send my intake form <span class="submit-arrow">→</span>
-      </button>
-      <p class="required-note">* Required fields. All other fields are optional but helpful.</p>
-    </div>
-
-  </form>
-
-  <div class="page-footer">
-    <p>
-      <a href="index.html">Rising Tide Digital LLC</a>
-      &nbsp;&middot;&nbsp; Wilmington, NC
-      &nbsp;&middot;&nbsp; "A rising tide lifts all boats"
-    </p>
-  </div>
-
+  <h1>New Client Intake</h1>
+  <p>Tell us about your project and we'll be in touch within 1 business day.</p>
+  <div class="header-rope"></div>
 </div>
+
+<!-- ═══ PROGRESS BAR (STICKY) ═══ -->
+<div class="progress-outer">
+  <div class="progress-meta">
+    <span class="progress-label" id="progressLabel">Section 1 of 6 — Contact Info</span>
+    <span class="progress-count" id="progressCount">~5 min</span>
+  </div>
+  <div class="progress-track">
+    <div class="progress-fill" id="progressFill" style="width: 16.66%"></div>
+  </div>
+  <div class="step-dots">
+    <div class="step-dot active" id="dot1"><span>1</span></div>
+    <div class="step-dot" id="dot2"><span>2</span></div>
+    <div class="step-dot" id="dot3"><span>3</span></div>
+    <div class="step-dot" id="dot4"><span>4</span></div>
+    <div class="step-dot" id="dot5"><span>5</span></div>
+    <div class="step-dot" id="dot6"><span>6</span></div>
+  </div>
+</div>
+
+<!-- ═══ MAIN CONTENT ═══ -->
+<div class="page-wrap">
+<form id="intakeForm" onsubmit="submitForm(event)" novalidate>
+
+  <!-- ── SECTION 1: Contact Info ── -->
+  <div class="form-section active" id="section1">
+    <div class="section-header">
+      <div class="section-num">1</div>
+      <span class="section-title">Contact Information</span>
+    </div>
+    <div class="field-row">
+      <div class="field"><label for="fname">First name *</label><input type="text" id="fname" name="fname" placeholder="Jane" required></div>
+      <div class="field"><label for="lname">Last name *</label><input type="text" id="lname" name="lname" placeholder="Smith" required></div>
+    </div>
+    <div class="field-row">
+      <div class="field"><label for="email">Email *</label><input type="email" id="email" name="email" placeholder="jane@yourbusiness.com" required></div>
+      <div class="field"><label for="phone">Phone</label><input type="tel" id="phone" name="phone" placeholder="(910) 555-0100"></div>
+    </div>
+    <div class="field-row">
+      <div class="field"><label for="bizname">Business name *</label><input type="text" id="bizname" name="bizname" placeholder="Smith Consulting LLC" required></div>
+      <div class="field"><label for="industry">Industry</label><input type="text" id="industry" name="industry" placeholder="e.g. Salon, Contractor, Law..."></div>
+    </div>
+    <div class="nav-buttons">
+      <span></span>
+      <button type="button" class="btn-next" onclick="goNext(1)">Continue <span class="btn-arrow">→</span></button>
+    </div>
+  </div>
+
+  <!-- ── SECTION 2: Your Website ── -->
+  <div class="form-section" id="section2">
+    <div class="section-header">
+      <div class="section-num">2</div>
+      <span class="section-title">Your Website</span>
+    </div>
+    <div class="field-full">
+      <span class="field-group-label">Do you already have a website?</span>
+      <div class="pill-group">
+        <label class="pill-option"><input type="radio" name="has_site" value="Yes, I need a redesign"><span>Yes — need a redesign</span></label>
+        <label class="pill-option"><input type="radio" name="has_site" value="No, starting fresh"><span>No — starting fresh</span></label>
+        <label class="pill-option"><input type="radio" name="has_site" value="Have a domain, no site yet"><span>Have a domain, no site yet</span></label>
+      </div>
+    </div>
+    <div class="field-full" style="margin-top:16px;">
+      <div class="field"><label for="current_url">Current website URL (if any)</label><input type="url" id="current_url" name="current_url" placeholder="https://yourbusiness.com"></div>
+    </div>
+    <div class="field-full">
+      <span class="field-group-label">Main goal for the website</span>
+      <div class="pill-group">
+        <label class="pill-option"><input type="radio" name="goal" value="Show info and credibility"><span>Show info / credibility</span></label>
+        <label class="pill-option"><input type="radio" name="goal" value="Generate leads and calls"><span>Generate leads / calls</span></label>
+        <label class="pill-option"><input type="radio" name="goal" value="Online bookings"><span>Online bookings</span></label>
+        <label class="pill-option"><input type="radio" name="goal" value="Sell products"><span>Sell products</span></label>
+        <label class="pill-option"><input type="radio" name="goal" value="Other"><span>Other</span></label>
+      </div>
+    </div>
+    <div class="field-full" style="margin-top:16px;">
+      <div class="field"><label for="audience">Who is your target audience?</label><input type="text" id="audience" name="audience" placeholder="e.g. Local homeowners, small businesses, parents in Wilmington..."></div>
+    </div>
+    <div class="nav-buttons">
+      <button type="button" class="btn-back" onclick="goBack(2)">← Back</button>
+      <button type="button" class="btn-next" onclick="goNext(2)">Continue <span class="btn-arrow">→</span></button>
+    </div>
+  </div>
+
+  <!-- ── SECTION 3: Pages and Features ── -->
+  <div class="form-section" id="section3">
+    <div class="section-header">
+      <div class="section-num">3</div>
+      <span class="section-title">Pages and Features</span>
+    </div>
+    <div class="field-full">
+      <span class="field-group-label">Pages you need (select all that apply)</span>
+      <div class="check-grid">
+        <label class="check-item"><input type="checkbox" name="pages" value="Home"><div class="check-box"><div class="check-box-inner"></div></div><span class="check-label">Home</span></label>
+        <label class="check-item"><input type="checkbox" name="pages" value="About"><div class="check-box"><div class="check-box-inner"></div></div><span class="check-label">About</span></label>
+        <label class="check-item"><input type="checkbox" name="pages" value="Services"><div class="check-box"><div class="check-box-inner"></div></div><span class="check-label">Services</span></label>
+        <label class="check-item"><input type="checkbox" name="pages" value="Contact"><div class="check-box"><div class="check-box-inner"></div></div><span class="check-label">Contact</span></label>
+        <label class="check-item"><input type="checkbox" name="pages" value="Portfolio / Gallery"><div class="check-box"><div class="check-box-inner"></div></div><span class="check-label">Portfolio / Gallery</span></label>
+        <label class="check-item"><input type="checkbox" name="pages" value="Blog"><div class="check-box"><div class="check-box-inner"></div></div><span class="check-label">Blog</span></label>
+        <label class="check-item"><input type="checkbox" name="pages" value="Testimonials"><div class="check-box"><div class="check-box-inner"></div></div><span class="check-label">Testimonials</span></label>
+        <label class="check-item"><input type="checkbox" name="pages" value="FAQ"><div class="check-box"><div class="check-box-inner"></div></div><span class="check-label">FAQ</span></label>
+        <label class="check-item"><input type="checkbox" name="pages" value="Booking / Scheduling"><div class="check-box"><div class="check-box-inner"></div></div><span class="check-label">Booking / Scheduling</span></label>
+        <label class="check-item"><input type="checkbox" name="pages" value="Shop / Products"><div class="check-box"><div class="check-box-inner"></div></div><span class="check-label">Shop / Products</span></label>
+        <label class="check-item"><input type="checkbox" name="pages" value="Team page"><div class="check-box"><div class="check-box-inner"></div></div><span class="check-label">Team Page</span></label>
+        <label class="check-item"><input type="checkbox" name="pages" value="Reviews page"><div class="check-box"><div class="check-box-inner"></div></div><span class="check-label">Reviews Page</span></label>
+      </div>
+    </div>
+    <div class="field-full" style="margin-top:16px;">
+      <div class="field"><label for="features">Special features needed</label><textarea id="features" name="features" placeholder="e.g. Contact form, appointment calendar, newsletter signup, map, live chat..."></textarea></div>
+    </div>
+    <div class="nav-buttons">
+      <button type="button" class="btn-back" onclick="goBack(3)">← Back</button>
+      <button type="button" class="btn-next" onclick="goNext(3)">Continue <span class="btn-arrow">→</span></button>
+    </div>
+  </div>
+
+  <!-- ── SECTION 4: Brand and Design ── -->
+  <div class="form-section" id="section4">
+    <div class="section-header">
+      <div class="section-num">4</div>
+      <span class="section-title">Brand and Design</span>
+    </div>
+    <div class="field-full">
+      <span class="field-group-label">Do you have a logo?</span>
+      <div class="pill-group">
+        <label class="pill-option"><input type="radio" name="logo" value="Yes, I have one"><span>Yes, I have one</span></label>
+        <label class="pill-option"><input type="radio" name="logo" value="No, I need one"><span>No — need one (add-on)</span></label>
+        <label class="pill-option"><input type="radio" name="logo" value="Have one, needs updating"><span>Have one, needs updating</span></label>
+      </div>
+    </div>
+    <div class="field-row" style="margin-top:16px;">
+      <div class="field"><label for="colors">Brand colors (if known)</label><input type="text" id="colors" name="colors" placeholder="e.g. Navy blue and white"></div>
+      <div class="field"><label for="fonts">Brand fonts (if known)</label><input type="text" id="fonts" name="fonts" placeholder="e.g. Not sure / Georgia"></div>
+    </div>
+    <div class="field-full">
+      <div class="field"><label for="inspo">3 websites you like (design reference)</label><textarea id="inspo" name="inspo" placeholder="Paste URLs or describe what you like about them..."></textarea></div>
+    </div>
+    <div class="field-full">
+      <span class="field-group-label">Overall vibe</span>
+      <div class="pill-group">
+        <label class="pill-option"><input type="radio" name="vibe" value="Clean and minimal"><span>Clean and minimal</span></label>
+        <label class="pill-option"><input type="radio" name="vibe" value="Bold and modern"><span>Bold and modern</span></label>
+        <label class="pill-option"><input type="radio" name="vibe" value="Warm and friendly"><span>Warm and friendly</span></label>
+        <label class="pill-option"><input type="radio" name="vibe" value="Corporate / professional"><span>Corporate / professional</span></label>
+        <label class="pill-option"><input type="radio" name="vibe" value="Creative / artistic"><span>Creative / artistic</span></label>
+      </div>
+    </div>
+    <div class="nav-buttons">
+      <button type="button" class="btn-back" onclick="goBack(4)">← Back</button>
+      <button type="button" class="btn-next" onclick="goNext(4)">Continue <span class="btn-arrow">→</span></button>
+    </div>
+  </div>
+
+  <!-- ── SECTION 5: Content ── -->
+  <div class="form-section" id="section5">
+    <div class="section-header">
+      <div class="section-num">5</div>
+      <span class="section-title">Content</span>
+    </div>
+    <div class="field-full">
+      <span class="field-group-label">Who will write the website copy (text)?</span>
+      <div class="pill-group">
+        <label class="pill-option"><input type="radio" name="copy" value="Client will provide copy"><span>I will provide it</span></label>
+        <label class="pill-option"><input type="radio" name="copy" value="Need help writing copy (add-on)"><span>Need help writing it (add-on)</span></label>
+        <label class="pill-option"><input type="radio" name="copy" value="Mix of both for copy"><span>Mix of both</span></label>
+      </div>
+    </div>
+    <div class="field-full" style="margin-top:16px;">
+      <span class="field-group-label">Who will provide photos / images?</span>
+      <div class="pill-group">
+        <label class="pill-option"><input type="radio" name="photos" value="Client has own photos"><span>I have my own photos</span></label>
+        <label class="pill-option"><input type="radio" name="photos" value="Use stock photos (add-on)"><span>Use stock photos (add-on)</span></label>
+        <label class="pill-option"><input type="radio" name="photos" value="Mix of own and stock photos"><span>Mix of both</span></label>
+      </div>
+    </div>
+    <div class="nav-buttons">
+      <button type="button" class="btn-back" onclick="goBack(5)">← Back</button>
+      <button type="button" class="btn-next" onclick="goNext(5)">Continue <span class="btn-arrow">→</span></button>
+    </div>
+  </div>
+
+  <!-- ── SECTION 6: Budget, Timeline, Anything Else ── -->
+  <div class="form-section" id="section6">
+    <div class="section-header">
+      <div class="section-num">6</div>
+      <span class="section-title">Budget, Timeline &amp; Anything Else</span>
+    </div>
+    <div class="field-full">
+      <span class="field-group-label">Estimated budget range</span>
+      <div class="pill-group">
+        <label class="pill-option"><input type="radio" name="budget" value="Under $500"><span>Under $500</span></label>
+        <label class="pill-option"><input type="radio" name="budget" value="$500 – $1,000"><span>$500 – $1,000</span></label>
+        <label class="pill-option"><input type="radio" name="budget" value="$1,000 – $2,500"><span>$1,000 – $2,500</span></label>
+        <label class="pill-option"><input type="radio" name="budget" value="$2,500 – $5,000"><span>$2,500 – $5,000</span></label>
+        <label class="pill-option"><input type="radio" name="budget" value="Open / let's talk"><span>Open / let's talk</span></label>
+      </div>
+    </div>
+    <div class="field-divider"></div>
+    <div class="field-full">
+      <span class="field-group-label">When do you need the site live?</span>
+      <div class="pill-group">
+        <label class="pill-option"><input type="radio" name="timeline" value="ASAP (under 2 weeks)"><span>ASAP (under 2 weeks)</span></label>
+        <label class="pill-option"><input type="radio" name="timeline" value="Within a month"><span>Within a month</span></label>
+        <label class="pill-option"><input type="radio" name="timeline" value="Flexible / no rush"><span>Flexible / no rush</span></label>
+      </div>
+    </div>
+    <div class="field-divider"></div>
+    <div class="field-full">
+      <span class="field-group-label">Interested in ongoing maintenance after launch?</span>
+      <div class="pill-group">
+        <label class="pill-option"><input type="radio" name="maintain" value="Yes, tell me about maintenance"><span>Yes, tell me more</span></label>
+        <label class="pill-option"><input type="radio" name="maintain" value="No, one-time project only"><span>No, one-time project</span></label>
+        <label class="pill-option"><input type="radio" name="maintain" value="Maybe, depends on cost"><span>Maybe — depends on cost</span></label>
+      </div>
+    </div>
+    <div class="field-divider"></div>
+    <div class="field-full">
+      <span class="field-group-label">How did you hear about us?</span>
+      <div class="pill-group">
+        <label class="pill-option"><input type="radio" name="referral" value="Word of mouth"><span>Word of mouth</span></label>
+        <label class="pill-option"><input type="radio" name="referral" value="Social media"><span>Social media</span></label>
+        <label class="pill-option"><input type="radio" name="referral" value="Google search"><span>Google search</span></label>
+        <label class="pill-option"><input type="radio" name="referral" value="Other"><span>Other</span></label>
+      </div>
+    </div>
+    <div class="field-divider"></div>
+    <div class="field-full">
+      <div class="field"><label for="notes">Anything else we should know?</label><textarea id="notes" name="notes" placeholder="Deadlines, past experiences with web designers, specific concerns or questions..."></textarea></div>
+    </div>
+    <div class="nav-buttons">
+      <button type="button" class="btn-back" onclick="goBack(6)">← Back</button>
+    </div>
+  </div>
+
+  <!-- ── SUBMIT ── -->
+  <div class="submit-section" id="submitSection" style="display:none;">
+    <p>Once you submit, your responses will open in your email client pre-filled and ready to send. We'll follow up within 1 business day to schedule a free discovery call.</p>
+    <button type="submit" class="submit-btn">
+      Send My Intake Form <span class="submit-arrow">→</span>
+    </button>
+    <p style="margin-top:1rem; color:rgba(255,255,255,0.35); font-size:12px;">* Required fields. All other fields are optional but helpful.</p>
+  </div>
+
+</form>
+
+<!-- ═══ SUCCESS SCREEN ═══ -->
+<div id="successScreen" style="display:none;">
+  <div style="
+    background: var(--navy);
+    border: 1px solid var(--gold-dim);
+    border-radius: var(--radius);
+    padding: 3rem 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 40px rgba(13,27,42,0.15);
+    margin-bottom: 1.5rem;
+    animation: sectionIn 0.5s cubic-bezier(0.4,0,0.2,1);
+  ">
+    <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold-dim),var(--gold-light),var(--gold-dim));"></div>
+    <div style="
+      width: 64px; height: 64px;
+      background: linear-gradient(135deg, var(--gold-light), var(--gold));
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 1.5rem;
+      font-size: 28px;
+      box-shadow: 0 4px 20px rgba(201,168,76,0.4);
+    ">✓</div>
+    <h2 style="font-family:'Cinzel',serif;font-size:22px;color:var(--gold-light);letter-spacing:0.06em;margin-bottom:0.75rem;">Form Received!</h2>
+    <p style="font-size:15px;color:rgba(255,255,255,0.65);font-weight:300;max-width:380px;margin:0 auto;line-height:1.7;">
+      Thanks for reaching out. We'll review your intake and follow up within <strong style="color:var(--gold);font-weight:600;">1 business day</strong> to schedule your free discovery call.
+    </p>
+    <p style="font-size:13px;color:rgba(255,255,255,0.35);margin-top:1.5rem;">Rising Tide Digital, LLC &nbsp;·&nbsp; Wilmington, NC</p>
+  </div>
+</div>
+
+<div class="page-footer">
+  <p>Rising Tide Digital, LLC &nbsp;·&nbsp; Wilmington, NC &nbsp;·&nbsp; <a href="mailto:hello@risingtidedigital.com">hello@risingtidedigital.com</a></p>
+</div>
+
+</div><!-- /page-wrap -->
+
+<script>
+  const TOTAL = 6;
+
+  const sectionLabels = [
+    'Contact Information',
+    'Your Website',
+    'Pages and Features',
+    'Brand and Design',
+    'Content',
+    'Budget, Timeline & Anything Else'
+  ];
+
+  let currentSection = 1;
+
+  function updateProgress(step) {
+    const pct = (step / TOTAL) * 100;
+    document.getElementById('progressFill').style.width = pct + '%';
+    document.getElementById('progressLabel').textContent =
+      `Section ${step} of ${TOTAL} — ${sectionLabels[step - 1]}`;
+
+    // dots
+    for (let i = 1; i <= TOTAL; i++) {
+      const dot = document.getElementById('dot' + i);
+      dot.className = 'step-dot';
+      if (i < step) dot.classList.add('done');
+      else if (i === step) dot.classList.add('active');
+    }
+  }
+
+  function showSection(n) {
+    for (let i = 1; i <= TOTAL; i++) {
+      const sec = document.getElementById('section' + i);
+      if (sec) sec.classList.remove('active');
+    }
+    const target = document.getElementById('section' + n);
+    if (target) target.classList.add('active');
+
+    // Submit block only on last section
+    document.getElementById('submitSection').style.display =
+      (n === TOTAL) ? 'block' : 'none';
+
+    currentSection = n;
+    updateProgress(n);
+
+    // Scroll to progress bar
+    document.querySelector('.progress-outer').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function goNext(from) {
+    // Validate section 1 required fields
+    if (from === 1) {
+      const fname = document.getElementById('fname').value.trim();
+      const lname = document.getElementById('lname').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const bizname = document.getElementById('bizname').value.trim();
+      if (!fname || !lname || !email || !bizname) {
+        alert('Please fill in your first name, last name, email, and business name before continuing.');
+        return;
+      }
+    }
+    if (from < TOTAL) showSection(from + 1);
+  }
+
+  function goBack(from) {
+    if (from > 1) showSection(from - 1);
+  }
+
+  async function submitForm(e) {
+    e.preventDefault();
+    const form = document.getElementById('intakeForm');
+
+    const get = (id) => { const el = document.getElementById(id); return el ? el.value.trim() : ''; };
+    const getRadio = (name) => { const el = form.querySelector(`input[name="${name}"]:checked`); return el ? el.value : 'Not answered'; };
+    const getCheckboxes = (name) => { const checked = [...form.querySelectorAll(`input[name="${name}"]:checked`)]; return checked.length ? checked.map(c => c.value).join(', ') : 'None selected'; };
+
+    const fname = get('fname'), lname = get('lname'), email = get('email'), bizname = get('bizname');
+
+    if (!fname || !lname || !email || !bizname) {
+      alert('Please fill in your first name, last name, business name, and email before submitting.');
+      showSection(1);
+      return;
+    }
+
+    // Disable button and show loading state
+    const submitBtn = document.querySelector('.submit-btn');
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = 'Sending… <span class="btn-arrow">⏳</span>';
+
+    const message = [
+      '=== NEW CLIENT INTAKE — RISING TIDE DIGITAL, LLC ===',
+      '',
+      '--- CONTACT INFO ---',
+      `Name: ${fname} ${lname}`,
+      `Email: ${email}`,
+      `Phone: ${get('phone') || 'Not provided'}`,
+      `Business: ${bizname}`,
+      `Industry: ${get('industry') || 'Not provided'}`,
+      '',
+      '--- WEBSITE ---',
+      `Has a website: ${getRadio('has_site')}`,
+      `Current URL: ${get('current_url') || 'None'}`,
+      `Main goal: ${getRadio('goal')}`,
+      `Target audience: ${get('audience') || 'Not provided'}`,
+      '',
+      '--- PAGES & FEATURES ---',
+      `Pages needed: ${getCheckboxes('pages')}`,
+      `Special features: ${get('features') || 'None listed'}`,
+      '',
+      '--- BRAND & DESIGN ---',
+      `Logo: ${getRadio('logo')}`,
+      `Brand colors: ${get('colors') || 'Not provided'}`,
+      `Brand fonts: ${get('fonts') || 'Not provided'}`,
+      `Design inspiration: ${get('inspo') || 'Not provided'}`,
+      `Vibe: ${getRadio('vibe')}`,
+      '',
+      '--- CONTENT ---',
+      `Copy responsibility: ${getRadio('copy')}`,
+      `Photos responsibility: ${getRadio('photos')}`,
+      '',
+      '--- BUDGET & TIMELINE ---',
+      `Budget range: ${getRadio('budget')}`,
+      `Timeline: ${getRadio('timeline')}`,
+      `Ongoing maintenance: ${getRadio('maintain')}`,
+      `Referral source: ${getRadio('referral')}`,
+      `Additional notes: ${get('notes') || 'None'}`,
+      '',
+      '=== END OF FORM ==='
+    ].join('\n');
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          access_key: '4afb9b32-d081-4b5b-94d3-98470c9b4e49',
+          subject: `New Intake Form — ${bizname} (${fname} ${lname})`,
+          from_name: `${fname} ${lname} via Rising Tide Digital Intake`,
+          replyto: email,
+          message: message
+        })
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        showSuccessScreen(fname);
+      } else {
+        throw new Error(result.message || 'Submission failed');
+      }
+    } catch (err) {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = 'Send My Intake Form <span class="btn-arrow">→</span>';
+      alert('Something went wrong. Please try again or email us directly at hello@risingtidedigital.com');
+      console.error(err);
+    }
+  }
+
+  function showSuccessScreen(fname) {
+    // Hide everything inside page-wrap except success
+    document.getElementById('intakeForm').style.display = 'none';
+    document.getElementById('submitSection').style.display = 'none';
+
+    const success = document.getElementById('successScreen');
+    success.style.display = 'block';
+
+    // Animate progress to 100%
+    document.getElementById('progressFill').style.width = '100%';
+    document.getElementById('progressLabel').textContent = 'Form Submitted — Thank You!';
+    for (let i = 1; i <= TOTAL; i++) {
+      const dot = document.getElementById('dot' + i);
+      dot.className = 'step-dot done';
+    }
+
+    success.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+</script>
 
 </body>
 </html>
