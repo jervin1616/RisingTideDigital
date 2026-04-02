@@ -425,8 +425,8 @@ p { font-size: 1rem; line-height: 1.75; color: var(--text-muted); }
 
 .hero-logo-wrap {
   position: relative;
-  width: 920px;
-  height: 920px;
+  width: 690px;
+  height: 690px;
   display: flex;
   align-items: center;
   justify-content: center;
