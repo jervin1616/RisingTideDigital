@@ -344,9 +344,9 @@ p { font-size: 1rem; line-height: 1.75; color: var(--text-muted); }
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 4rem;
-  align-items: center;
-  padding-top: 6rem;
-  padding-bottom: 4rem;
+  align-items: stretch;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
 }
 
 .hero-content { max-width: 580px; display: flex; flex-direction: column; align-items: center; text-align: center; }
@@ -1861,8 +1861,6 @@ select.form-control {
   letter-spacing: 0.14em;
   font-style: italic;
   text-align: center;
-  margin-top: -10rem;
+  margin-top: 0.75rem;
   margin-bottom: 0;
-  position: relative;
-  z-index: 2;
 }
