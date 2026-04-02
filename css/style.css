@@ -419,8 +419,10 @@ p { font-size: 1rem; line-height: 1.75; color: var(--text-muted); }
 /* Hero visual side */
 .hero-visual {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: 100%;
 }
 
 .hero-logo-wrap {
