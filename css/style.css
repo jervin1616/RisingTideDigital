@@ -1517,8 +1517,8 @@ select.form-control {
 }
 
 .process-card {
-  background: var(--white);
-  border: 1px solid var(--gray-light);
+  background: var(--navy-light);
+  border: 1px solid rgba(201,164,67,0.25);
   border-radius: var(--radius-lg);
   padding: 2rem 1.75rem;
   transition: var(--transition);
@@ -1527,15 +1527,15 @@ select.form-control {
 
 .process-card:hover {
   transform: translateY(-3px);
-  box-shadow: var(--shadow-md);
-  border-color: var(--gold-pale);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.30);
+  border-color: var(--gold);
 }
 
 .process-card-num {
   font-family: var(--font-heading);
   font-size: 3.5rem;
   font-weight: 700;
-  color: rgba(201,164,67,0.18);
+  color: rgba(201,164,67,0.40);
   line-height: 1;
   margin-bottom: 0.5rem;
   letter-spacing: -0.02em;
@@ -1557,11 +1557,13 @@ select.form-control {
 .process-card h3 {
   font-size: 1.05rem;
   margin-bottom: 0.5rem;
+  color: var(--white);
 }
 
 .process-card p {
   font-size: 0.9rem;
   line-height: 1.7;
+  color: rgba(255,255,255,0.68);
 }
 
 /* ---------- Responsive additions ---------- */
@@ -1815,4 +1817,56 @@ select.form-control {
   padding: 0.25rem 0.75rem;
   border-radius: 50px;
   margin-bottom: 0.6rem;
+}
+
+/* Pill category tag on portfolio cards */
+.portfolio-tag {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  background: rgba(201,164,67,0.12);
+  color: var(--gold);
+  border: 1px solid rgba(201,164,67,0.35);
+  padding: 0.2rem 0.65rem;
+  border-radius: 50px;
+  margin-bottom: 0.5rem;
+}
+
+/* AI-Generated badge on service card headings */
+.service-badge-ai {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: rgba(201,164,67,0.14);
+  color: var(--gold);
+  border: 1px solid rgba(201,164,67,0.35);
+  border-radius: 50px;
+  padding: 0.15rem 0.55rem;
+  vertical-align: middle;
+  margin-left: 0.45rem;
+}
+
+/* Hero brand tagline (under logo, above H1) */
+.hero-brand-tagline {
+  font-family: var(--font-heading);
+  font-size: 0.82rem;
+  color: rgba(201,164,67,0.65);
+  letter-spacing: 0.14em;
+  font-style: italic;
+  margin-top: -8px;
+  margin-bottom: 1.25rem;
+}
+
+/* Ensure hero-centered flex overrides the grid set by .hero .container */
+.hero .hero-centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  grid-template-columns: unset;
 }
