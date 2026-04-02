@@ -1577,6 +1577,223 @@ select.form-control {
   .hero-stat-num { font-size: 1.4rem; }
 }
 
+/* ===================== ABOUT PAGE ===================== */
+
+.about-story-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.about-story-content p + p {
+  /* handled inline via style attribute */
+}
+
+.about-quote {
+  font-family: var(--font-heading);
+  font-size: clamp(1.05rem, 2vw, 1.25rem);
+  color: var(--navy);
+  border-left: 4px solid var(--gold);
+  padding: 0.75rem 1.25rem;
+  margin: 1.75rem 0;
+  font-style: italic;
+  background: var(--gold-pale);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  line-height: 1.5;
+}
+
+.about-accent-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.about-accent-card {
+  background: var(--white);
+  border: 1px solid var(--gray-light);
+  border-left: 4px solid var(--gold);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+}
+
+.about-accent-card:hover {
+  box-shadow: var(--shadow-md);
+  border-left-color: var(--gold-light);
+  transform: translateY(-2px);
+}
+
+.about-accent-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius);
+  background: linear-gradient(135deg, var(--navy), var(--navy-light));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold);
+  font-size: 1.1rem;
+  margin-bottom: 0.85rem;
+}
+
+.about-accent-card h4 {
+  color: var(--navy);
+  margin-bottom: 0.4rem;
+}
+
+.about-accent-card p {
+  font-size: 0.9rem;
+  line-height: 1.65;
+}
+
+/* Wave divider alt direction */
+.wave-divider--to-alt {
+  margin-top: -1px;
+}
+
+/* Built for a Purpose: two-column */
+.about-purpose-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.about-callout {
+  background: var(--navy);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem 2rem;
+  position: relative;
+}
+
+.about-callout-icon {
+  color: var(--gold);
+  font-size: 2rem;
+  opacity: 0.5;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.about-callout-quote {
+  font-family: var(--font-heading);
+  font-size: clamp(1rem, 1.8vw, 1.2rem);
+  color: var(--white);
+  line-height: 1.55;
+  font-style: italic;
+  margin-bottom: 1.25rem;
+}
+
+.about-callout-attr {
+  font-size: 0.8rem;
+  color: var(--gold);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+/* Mission section (dark navy) */
+.about-mission {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+  padding: 5rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.about-mission::before {
+  content: '';
+  position: absolute;
+  top: -40%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, rgba(201,164,67,0.10) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.about-mission h2 {
+  color: var(--white);
+}
+
+.about-mission-tagline {
+  font-family: var(--font-heading);
+  font-size: clamp(1.15rem, 2.5vw, 1.5rem);
+  color: var(--gold);
+  font-style: italic;
+  margin: 1.25rem auto 1.5rem;
+  max-width: 600px;
+}
+
+.about-mission-body {
+  color: rgba(255,255,255,0.68);
+  max-width: 640px;
+  margin: 0 auto 3rem;
+  font-size: 1rem;
+}
+
+.about-values {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.about-value {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(201,164,67,0.2);
+  border-radius: var(--radius);
+  padding: 1.75rem 1.5rem;
+  text-align: center;
+  transition: var(--transition);
+}
+
+.about-value:hover {
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(201,164,67,0.4);
+  transform: translateY(-3px);
+}
+
+.about-value-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius);
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--navy);
+  font-size: 1.1rem;
+  margin: 0 auto 1rem;
+}
+
+.about-value h4 {
+  color: var(--white);
+  margin-bottom: 0.5rem;
+}
+
+.about-value p {
+  color: rgba(255,255,255,0.55);
+  font-size: 0.875rem;
+  line-height: 1.65;
+}
+
+/* About responsive */
+@media (max-width: 900px) {
+  .about-story-grid,
+  .about-purpose-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-values {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* ---------- Portfolio Featured Card ---------- */
 .portfolio-card-featured {
   border-color: var(--gold);
