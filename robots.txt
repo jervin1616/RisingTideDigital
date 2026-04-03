@@ -5,4 +5,4 @@ Allow: /
 Disallow: /thanks.html
 Disallow: /intake.html
 
-Sitemap: https://www.risingtidedigital.com/sitemap.xml
+Sitemap: https://risingtidedigital.us/sitemap.xml
