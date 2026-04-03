@@ -43,4 +43,19 @@
     <priority>0.8</priority>
   </url>
 
+
+  <url>
+    <loc>https://risingtidedigital.us/blog/</loc>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://risingtidedigital.us/blog/how-much-does-a-website-cost-wilmington-nc.html</loc>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
 </urlset>
