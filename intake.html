@@ -3,7 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>New Client Intake — Rising Tide Digital, LLC</title>
+  <meta name="description" content="Start your web design project with Rising Tide Digital. Fill out our intake form for a custom quote on your Wilmington NC small business website." />
+  <meta name="robots" content="noindex, follow" />
+  <title>New Client Intake | Rising Tide Digital</title>
+  <link rel="canonical" href="https://risingtidedigital.us/intake.html" />
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://risingtidedigital.us/intake.html" />
+  <meta property="og:title" content="New Client Intake | Rising Tide Digital" />
+  <meta property="og:description" content="Start your web design project with Rising Tide Digital. Fill out our intake form for a custom quote on your Wilmington NC small business website." />
+  <meta property="og:image" content="https://risingtidedigital.us/assets/images/logo.png" />
+  <meta property="og:site_name" content="Rising Tide Digital" />
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -574,6 +584,30 @@
 
     .page-footer a { color: var(--gold-dim); text-decoration: none; }
 
+    /* ─── RETURN HOME BUTTON ─── */
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-top: 1rem;
+      padding: 0.55rem 1.25rem;
+      border: 1.5px solid rgba(201,168,76,0.35);
+      border-radius: 8px;
+      background: transparent;
+      color: rgba(255,255,255,0.55);
+      font-family: 'Raleway', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-ghost:hover {
+      border-color: var(--gold);
+      color: var(--gold-light);
+    }
+
     /* ─── DIVIDER ─── */
     .field-divider {
       height: 1px;
@@ -600,8 +634,7 @@
 <!-- ═══ HEADER ═══ -->
 <div class="page-header">
   <div class="logo-wrap">
-    <img src="logo-removebg-preview.png" alt="Rising Tide Digital Logo" class="logo-img"
-         onerror="this.style.display='none'">
+    <img src="assets/images/logo.png" alt="Rising Tide Digital Logo" class="logo-img">
     <div class="logo-text">
       <span class="brand-name">RISING TIDE</span>
       <span class="brand-sub">DIGITAL, LLC</span>
@@ -609,6 +642,7 @@
   </div>
   <h1>New Client Intake</h1>
   <p>Tell us about your project and we'll be in touch within 1 business day.</p>
+  <a href="index.html" class="btn-ghost">&#8592; Return Home</a>
   <div class="header-rope"></div>
 </div>
 
@@ -889,7 +923,7 @@
 </div>
 
 <div class="page-footer">
-  <p>Rising Tide Digital, LLC &nbsp;·&nbsp; Wilmington, NC &nbsp;·&nbsp; <a href="mailto:hello@risingtidedigital.com">hello@risingtidedigital.com</a></p>
+  <p>Rising Tide Digital, LLC &nbsp;·&nbsp; Wilmington, NC &nbsp;·&nbsp; <a href="mailto:joseph@risingtidedigital.us">joseph@risingtidedigital.us</a></p>
 </div>
 
 </div><!-- /page-wrap -->
@@ -1046,7 +1080,7 @@
     } catch (err) {
       submitBtn.disabled = false;
       submitBtn.innerHTML = 'Send My Intake Form <span class="btn-arrow">→</span>';
-      alert('Something went wrong. Please try again or email us directly at hello@risingtidedigital.com');
+      alert('Something went wrong. Please try again or email us directly at joseph@risingtidedigital.us');
       console.error(err);
     }
   }

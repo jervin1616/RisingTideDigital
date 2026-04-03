@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Keep utility/confirmation pages out of the index
+Disallow: /thanks.html
+Disallow: /intake.html
+
+Sitemap: https://risingtidedigital.us/sitemap.xml
