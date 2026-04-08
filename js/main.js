@@ -97,10 +97,16 @@ document.addEventListener('DOMContentLoaded', () => {
       const isOpen = item.classList.contains('open');
 
       // Close all
-      document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+      document.querySelectorAll('.faq-item.open').forEach(el => {
+        el.classList.remove('open');
+        el.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+      });
 
       // Toggle current
-      if (!isOpen) item.classList.add('open');
+      if (!isOpen) {
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
     });
   });
 
