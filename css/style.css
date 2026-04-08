@@ -1864,3 +1864,117 @@ select.form-control {
   margin-top: 0.75rem;
   margin-bottom: 0;
 }
+
+/* ============================================================
+   ACCESSIBILITY & UTILITY ADDITIONS
+   ============================================================ */
+
+/* Skip navigation link */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 1rem;
+  z-index: 9999;
+  padding: 0.6rem 1.25rem;
+  background: var(--gold);
+  color: var(--navy);
+  font-weight: 700;
+  font-size: 0.875rem;
+  border-radius: var(--radius);
+  text-decoration: none;
+  transition: top 0.2s;
+}
+.skip-link:focus { top: 1rem; }
+
+/* Focus styles (keyboard navigation) */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+/* btn-secondary — used in blog CTAs on dark backgrounds */
+.btn-secondary {
+  background: transparent;
+  color: var(--white);
+  border-color: rgba(255,255,255,0.5);
+}
+.btn-secondary:hover {
+  background: rgba(255,255,255,0.12);
+  border-color: var(--white);
+  transform: translateY(-2px);
+}
+
+/* CTA banner section-label — force block layout in centered banners */
+.cta-banner .section-label,
+.about-mission .section-label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+/* About page: paragraph spacing without inline styles */
+.about-story-content p + p,
+.about-purpose-grid p + p {
+  margin-top: 1.25rem;
+}
+
+/* ============================================================
+   PORTFOLIO PAGE STYLES (moved from inline <style> block)
+   ============================================================ */
+
+.portfolio-section-heading {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 0.5rem;
+}
+
+.portfolio-section-intro {
+  color: var(--text-muted);
+  font-size: 0.975rem;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.badge-pill {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.badge-live-client {
+  background: rgba(16, 135, 75, 0.12);
+  color: #10874b;
+  border: 1px solid rgba(16, 135, 75, 0.3);
+}
+
+.badge-concept {
+  background: rgba(90, 100, 120, 0.10);
+  color: #4a5568;
+  border: 1px solid rgba(90, 100, 120, 0.25);
+}
+
+.portfolio-section + .portfolio-section {
+  border-top: 1px solid var(--gray-light);
+  padding-top: 3rem;
+}
+
+/* Mobile: ensure minimum 44x44 touch target on buttons */
+@media (max-width: 768px) {
+  .btn {
+    min-height: 44px;
+  }
+  /* Hide nav logo tagline below 768px to prevent overflow */
+  .nav-logo-sub {
+    display: none;
+  }
+}

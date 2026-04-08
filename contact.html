@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Get a free web design quote from Rising Tide Digital in Wilmington, NC. Flat-rate pricing, 50% deposit to start, direct owner communication." />
-  <title>Free Web Design Quote Wilmington NC | Rising Tide Digital</title>
+  <meta name="description" content="Contact Rising Tide Digital in Wilmington, NC. Get a free web design quote — flat-rate pricing, direct owner communication, response within one business day." />
+  <meta name="robots" content="index, follow" />
+  <title>Contact Us | Rising Tide Digital | Wilmington, NC</title>
   <link rel="canonical" href="https://risingtidedigital.us/contact.html" />
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
@@ -24,11 +25,13 @@
 </head>
 <body>
 
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
   <!-- ===================== NAVIGATION ===================== -->
   <nav class="navbar" id="navbar">
     <div class="container">
       <a href="index.html" class="nav-logo">
-        <img src="assets/images/logo.png" alt="Rising Tide Digital LLC Logo" />
+        <img src="assets/images/logo.webp" alt="Rising Tide Digital LLC Logo" width="1195" height="672" />
         <div class="nav-logo-text">
           <span class="nav-logo-name">Rising Tide Digital</span>
           <span class="nav-logo-sub">LLC &mdash; Wilmington, NC</span>
@@ -61,6 +64,8 @@
     <a href="contact.html">Contact</a>
     <a href="intake.html" class="btn btn-primary btn-lg">Get a Free Quote</a>
   </nav>
+
+  <main id="main-content">
 
   <!-- ===================== PAGE HERO ===================== -->
   <section class="page-hero">
@@ -100,6 +105,16 @@
             Fill out the form and we'll get back to you as soon as possible —
             usually within one business day. No pushy sales calls, no obligations.
           </p>
+
+          <!-- Intake form callout -->
+          <div style="margin-bottom:2rem;padding:1.25rem 1.5rem;background:rgba(201,164,67,0.08);border:1px solid rgba(201,164,67,0.3);border-radius:var(--radius);display:flex;align-items:flex-start;gap:0.75rem;">
+            <i class="fa-solid fa-clipboard-list" style="color:var(--gold);margin-top:0.2rem;flex-shrink:0;"></i>
+            <div>
+              <p style="font-size:0.875rem;color:var(--navy);font-weight:600;margin-bottom:0.25rem;">Starting a new project?</p>
+              <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:0.6rem;line-height:1.5;">For the fastest, most accurate quote, use our detailed project intake form instead — it takes about 5 minutes and tells us everything we need to give you a precise number.</p>
+              <a href="intake.html" style="font-size:0.85rem;font-weight:600;color:var(--gold);">Use the Project Intake Form &rarr;</a>
+            </div>
+          </div>
 
           <div class="contact-detail">
             <div class="contact-detail-icon">
@@ -166,32 +181,32 @@
               <!-- Web3Forms configuration -->
               <input type="hidden" name="access_key" value="4afb9b32-d081-4b5b-94d3-98470c9b4e49" />
               <input type="hidden" name="subject" value="New Inquiry — Rising Tide Digital" />
-              <input type="hidden" name="redirect" value="https://jervin1616.github.io/RisingTideDigital/thanks.html" />
+              <input type="hidden" name="redirect" value="https://risingtidedigital.us/thanks.html" />
 
               <div class="form-row">
                 <div class="form-group">
                   <label for="firstName">First Name <span>*</span></label>
                   <input type="text" id="firstName" name="firstName" class="form-control"
-                         placeholder="John" required />
+                         placeholder="John" required aria-required="true" />
                 </div>
                 <div class="form-group">
                   <label for="lastName">Last Name <span>*</span></label>
                   <input type="text" id="lastName" name="lastName" class="form-control"
-                         placeholder="Smith" required />
+                         placeholder="Smith" required aria-required="true" />
                 </div>
               </div>
 
               <div class="form-group">
                 <label for="businessName">Business Name <span>*</span></label>
                 <input type="text" id="businessName" name="businessName" class="form-control"
-                       placeholder="Smith Plumbing LLC" required />
+                       placeholder="Smith Plumbing LLC" required aria-required="true" />
               </div>
 
               <div class="form-row">
                 <div class="form-group">
                   <label for="email">Email Address <span>*</span></label>
                   <input type="email" id="email" name="email" class="form-control"
-                         placeholder="john@smithplumbing.com" required />
+                         placeholder="john@smithplumbing.com" required aria-required="true" />
                 </div>
                 <div class="form-group">
                   <label for="phone">Phone Number</label>
@@ -202,7 +217,7 @@
 
               <div class="form-group">
                 <label for="serviceInterest">Service You're Interested In <span>*</span></label>
-                <select id="serviceInterest" name="serviceInterest" class="form-control" required>
+                <select id="serviceInterest" name="serviceInterest" class="form-control" required aria-required="true">
                   <option value="" disabled selected>Select a service…</option>
                   <option value="starter-build">Starter Website Build ($500–$800)</option>
                   <option value="standard-build">Standard Website Build ($800–$1,500)</option>
@@ -225,7 +240,7 @@
               <div class="form-group">
                 <label for="message">Tell Us About Your Business <span>*</span></label>
                 <textarea id="message" name="message" class="form-control" rows="5"
-                          placeholder="What does your business do? What do you need from your website? Any specific features or goals?" required></textarea>
+                          placeholder="What does your business do? What do you need from your website? Any specific features or goals?" required aria-required="true"></textarea>
               </div>
 
               <!-- Honeypot — hidden from real users, catches bots -->
@@ -287,12 +302,14 @@
     </div>
   </section>
 
+  </main>
+
   <!-- ===================== FOOTER ===================== -->
   <footer class="footer">
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <img src="assets/images/logo.png" alt="Rising Tide Digital LLC" class="footer-brand-logo" />
+          <img src="assets/images/logo.webp" alt="Rising Tide Digital LLC" class="footer-brand-logo" width="1195" height="672" loading="lazy" />
           <p>
             Professional website design for small businesses. We help local
             contractors, tradespeople, shops, and service providers build a
@@ -349,7 +366,7 @@
       </div>
       <div class="footer-bottom">
         <span>&copy; 2026 Rising Tide Digital LLC. All rights reserved.</span>
-        <span>Built by Joseph &mdash; Rising Tide Digital LLC</span>
+        <span>Built by <a href="https://risingtidedigital.us">Rising Tide Digital LLC</a></span>
       </div>
     </div>
   </footer>
