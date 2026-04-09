@@ -1869,11 +1869,11 @@ select.form-control {
    ACCESSIBILITY & UTILITY ADDITIONS
    ============================================================ */
 
-/* Skip navigation link */
+/* Skip navigation link — hidden off-canvas, revealed on keyboard focus */
 .skip-link {
-  position: absolute;
-  top: -100px;
-  left: 1rem;
+  position: fixed;
+  top: 1rem;
+  left: -9999px;
   z-index: 9999;
   padding: 0.6rem 1.25rem;
   background: var(--gold);
@@ -1882,9 +1882,9 @@ select.form-control {
   font-size: 0.875rem;
   border-radius: var(--radius);
   text-decoration: none;
-  transition: top 0.2s;
+  white-space: nowrap;
 }
-.skip-link:focus { top: 1rem; }
+.skip-link:focus { left: 1rem; }
 
 /* Focus styles (keyboard navigation) */
 a:focus-visible,
