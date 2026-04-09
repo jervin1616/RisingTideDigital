@@ -1583,33 +1583,51 @@ select.form-control {
 
 /* ===================== ABOUT PAGE ===================== */
 
-.about-story-grid {
+/* Two-column intro: photo left | origin story right */
+.about-intro-grid {
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 4rem;
+  grid-template-columns: 5fr 7fr;
+  gap: 3.5rem;
   align-items: start;
+  margin-bottom: 2.5rem;
+}
+
+.about-photo img {
+  border-radius: 12px;
+  width: 100%;
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.15);
+}
+
+.about-photo figcaption {
+  margin-top: 0.6rem;
+  font-size: 0.85rem;
+  color: #666;
+  font-style: italic;
+  text-align: center;
 }
 
 .about-story-content p + p {
-  /* handled inline via style attribute */
+  margin-top: 1rem;
 }
 
+/* Full-width pull quote below the two columns */
 .about-quote {
   font-family: var(--font-heading);
-  font-size: clamp(1.05rem, 2vw, 1.25rem);
+  font-size: clamp(1.1rem, 2.2vw, 1.35rem);
   color: var(--navy);
   border-left: 4px solid var(--gold);
-  padding: 0.75rem 1.25rem;
-  margin: 1.75rem 0;
+  padding: 1.25rem 2rem;
+  margin: 0 0 2.5rem;
   font-style: italic;
   background: var(--gold-pale);
   border-radius: 0 var(--radius) var(--radius) 0;
   line-height: 1.5;
 }
 
+/* Feature cards: side-by-side */
 .about-accent-cards {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 1.5rem;
 }
 
@@ -1785,7 +1803,10 @@ select.form-control {
 
 /* About responsive */
 @media (max-width: 900px) {
-  .about-story-grid,
+  .about-intro-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
   .about-purpose-grid {
     grid-template-columns: 1fr;
     gap: 2.5rem;
@@ -1793,6 +1814,9 @@ select.form-control {
 }
 
 @media (max-width: 768px) {
+  .about-accent-cards {
+    grid-template-columns: 1fr;
+  }
   .about-values {
     grid-template-columns: 1fr;
   }
@@ -1979,25 +2003,3 @@ textarea:focus-visible {
   }
 }
 
-/* ============================================================
-   About Page — Headshot
-   ============================================================ */
-.about-headshot {
-  text-align: center;
-  margin: 2rem auto 3rem;
-}
-
-.about-headshot img {
-  border-radius: 12px;
-  max-width: 360px;
-  width: 100%;
-  margin: 0 auto;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-}
-
-.about-headshot figcaption {
-  margin-top: 0.5rem;
-  font-size: 0.85rem;
-  color: #666;
-  font-style: italic;
-}
