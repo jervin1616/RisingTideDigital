@@ -1627,13 +1627,15 @@ select.form-control {
   font-family: var(--font-heading);
   font-size: clamp(1.1rem, 2.2vw, 1.35rem);
   color: var(--navy);
-  border-left: 4px solid var(--gold);
+  border-left: none;
+  border-top: 4px solid var(--gold);
   padding: 1.25rem 2rem;
   margin: 0 0 2.5rem;
   font-style: italic;
   background: var(--gold-pale);
-  border-radius: 0 var(--radius) var(--radius) 0;
+  border-radius: var(--radius);
   line-height: 1.5;
+  text-align: center;
 }
 
 /* Feature cards: side-by-side */
