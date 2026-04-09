@@ -1585,11 +1585,23 @@ select.form-control {
 
 /* Two-column intro: photo left | origin story right */
 .about-intro-grid {
-  display: grid;
-  grid-template-columns: 5fr 7fr;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   gap: 3.5rem;
-  align-items: start;
   margin-bottom: 2.5rem;
+}
+
+.about-intro-grid .about-photo {
+  flex: 0 0 45%;
+  max-width: 45%;
+  min-width: 0;
+}
+
+.about-intro-grid .about-story-content {
+  flex: 0 0 55%;
+  max-width: 55%;
+  min-width: 0;
 }
 
 .about-photo img {
@@ -1803,17 +1815,22 @@ select.form-control {
 
 /* About responsive */
 @media (max-width: 900px) {
-  .about-intro-grid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
   .about-purpose-grid {
     grid-template-columns: 1fr;
     gap: 2.5rem;
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
+  .about-intro-grid {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  .about-intro-grid .about-photo,
+  .about-intro-grid .about-story-content {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
   .about-accent-cards {
     grid-template-columns: 1fr;
   }
