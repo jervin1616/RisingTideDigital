@@ -1625,17 +1625,15 @@ select.form-control {
 /* Full-width pull quote below the two columns */
 .about-quote {
   font-family: var(--font-heading);
-  font-size: clamp(1.1rem, 2.2vw, 1.35rem);
+  font-size: clamp(1.05rem, 1.8vw, 1.2rem);
   color: var(--navy);
-  border-left: none;
-  border-top: 4px solid var(--gold);
-  padding: 1.25rem 2rem;
-  margin: 0 0 2.5rem;
+  border-left: 4px solid var(--gold);
+  padding: 0.85rem 1.25rem;
+  margin: 1.5rem 0 0;
   font-style: italic;
   background: var(--gold-pale);
-  border-radius: var(--radius);
+  border-radius: 0 var(--radius) var(--radius) 0;
   line-height: 1.5;
-  text-align: center;
 }
 
 /* Feature cards: side-by-side */
