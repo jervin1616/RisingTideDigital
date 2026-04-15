@@ -1583,33 +1583,63 @@ select.form-control {
 
 /* ===================== ABOUT PAGE ===================== */
 
-.about-story-grid {
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 4rem;
-  align-items: start;
+/* Two-column intro: photo left | origin story right */
+.about-intro-grid {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 3.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.about-intro-grid .about-photo {
+  flex: 0 0 45%;
+  max-width: 45%;
+  min-width: 0;
+}
+
+.about-intro-grid .about-story-content {
+  flex: 0 0 55%;
+  max-width: 55%;
+  min-width: 0;
+}
+
+.about-photo img {
+  border-radius: 12px;
+  width: 100%;
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.15);
+}
+
+.about-photo figcaption {
+  margin-top: 0.6rem;
+  font-size: 0.85rem;
+  color: #666;
+  font-style: italic;
+  text-align: center;
 }
 
 .about-story-content p + p {
-  /* handled inline via style attribute */
+  margin-top: 1rem;
 }
 
+/* Full-width pull quote below the two columns */
 .about-quote {
   font-family: var(--font-heading);
-  font-size: clamp(1.05rem, 2vw, 1.25rem);
+  font-size: clamp(1.05rem, 1.8vw, 1.2rem);
   color: var(--navy);
   border-left: 4px solid var(--gold);
-  padding: 0.75rem 1.25rem;
-  margin: 1.75rem 0;
+  padding: 0.85rem 1.25rem;
+  margin: 1.5rem 0 0;
   font-style: italic;
   background: var(--gold-pale);
   border-radius: 0 var(--radius) var(--radius) 0;
   line-height: 1.5;
 }
 
+/* Feature cards: side-by-side */
 .about-accent-cards {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 1.5rem;
 }
 
@@ -1785,14 +1815,25 @@ select.form-control {
 
 /* About responsive */
 @media (max-width: 900px) {
-  .about-story-grid,
   .about-purpose-grid {
     grid-template-columns: 1fr;
     gap: 2.5rem;
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
+  .about-intro-grid {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  .about-intro-grid .about-photo,
+  .about-intro-grid .about-story-content {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+  .about-accent-cards {
+    grid-template-columns: 1fr;
+  }
   .about-values {
     grid-template-columns: 1fr;
   }
@@ -1869,11 +1910,11 @@ select.form-control {
    ACCESSIBILITY & UTILITY ADDITIONS
    ============================================================ */
 
-/* Skip navigation link */
+/* Skip navigation link — hidden off-canvas, revealed on keyboard focus */
 .skip-link {
-  position: absolute;
-  top: -100px;
-  left: 1rem;
+  position: fixed;
+  top: 1rem;
+  left: -9999px;
   z-index: 9999;
   padding: 0.6rem 1.25rem;
   background: var(--gold);
@@ -1882,9 +1923,9 @@ select.form-control {
   font-size: 0.875rem;
   border-radius: var(--radius);
   text-decoration: none;
-  transition: top 0.2s;
+  white-space: nowrap;
 }
-.skip-link:focus { top: 1rem; }
+.skip-link:focus { left: 1rem; }
 
 /* Focus styles (keyboard navigation) */
 a:focus-visible,
@@ -1978,3 +2019,4 @@ textarea:focus-visible {
     display: none;
   }
 }
+

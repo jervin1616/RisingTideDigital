@@ -13,6 +13,10 @@
   <meta property="og:title" content="Web Design Portfolio | Rising Tide Digital Wilmington NC" />
   <meta property="og:description" content="Portfolio of websites built by Rising Tide Digital for Wilmington NC small businesses — photography studios, contractors, cleaning companies, e-commerce &amp; more." />
   <meta property="og:image" content="https://risingtidedigital.us/assets/images/logo.png" />
+  <meta property="og:image:width" content="1195" />
+  <meta property="og:image:height" content="672" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="fb:app_id" content="1314498443874503" />
   <meta property="og:site_name" content="Rising Tide Digital" />
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
@@ -20,6 +24,7 @@
   <meta name="twitter:description" content="Websites built by Rising Tide Digital for Wilmington NC small businesses — contractors, cleaners, photographers, e-commerce &amp; more." />
   <meta name="twitter:image" content="https://risingtidedigital.us/assets/images/logo.png" />
   <link rel="icon" type="image/png" href="assets/images/favicon.png" />
+  <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
@@ -44,6 +49,7 @@
         <li><a href="portfolio.html">Portfolio</a></li>
         <li><a href="process.html">Process</a></li>
         <li><a href="contact.html">Contact</a></li>
+        <li><a href="recovery.html">One Day Digital</a></li>
       </ul>
       <a href="intake.html" class="btn btn-primary nav-cta">Get a Free Quote</a>
       <button class="nav-toggle" id="navToggle" aria-label="Open menu">
@@ -62,6 +68,7 @@
     <a href="portfolio.html">Portfolio</a>
     <a href="process.html">Process</a>
     <a href="contact.html">Contact</a>
+    <a href="recovery.html">One Day Digital</a>
     <a href="intake.html" class="btn btn-primary btn-lg">Get a Free Quote</a>
   </nav>
 
@@ -96,10 +103,10 @@
       <!-- ---- SECTION 1: Live Client Work ---- -->
       <div class="portfolio-section" style="margin-bottom:3rem;">
         <h2 class="portfolio-section-heading">Live Client Work</h2>
-        <div class="portfolio-grid" style="justify-items:center;">
+        <div class="portfolio-grid">
 
           <!-- Premier DJ Productions -->
-          <div class="portfolio-card portfolio-card-featured reveal reveal-delay-1" style="max-width:620px;width:100%;">
+          <div class="portfolio-card portfolio-card-featured reveal reveal-delay-1">
             <div class="portfolio-thumb">
               <img src="assets/images/screenshots/premier-dj-productions.jpg"
                    alt="Premier DJ Productions — full brand website with booking inquiry flow and gallery"
@@ -127,6 +134,31 @@
                 </cite>
               </blockquote>
               <a href="https://www.premierdjproductions.com" target="_blank" rel="noopener noreferrer"
+                 class="btn btn-primary">
+                Visit Live Site <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Jeff Sikes Chimney Services -->
+          <div class="portfolio-card portfolio-card-featured reveal reveal-delay-2">
+            <div class="portfolio-thumb" style="background:#1c1c1c;">
+              <img src="assets/images/screenshots/jeff-sikes-chimney-services.jpg"
+                   alt="Jeff Sikes Chimney Services — professional chimney services website"
+                   width="1365" height="598"
+                   loading="lazy"
+                   onerror="this.parentElement.innerHTML='<span style=\'font-size:0.9rem;color:rgba(255,255,255,0.6);padding:1rem;text-align:center;\'>Screenshot: Jeff Sikes Chimney Services</span>';" />
+            </div>
+            <div class="portfolio-card-body">
+              <span class="badge-pill badge-live-client">Live Client</span>
+              <span class="portfolio-tag">Home Services</span>
+              <span class="portfolio-category">Chimney Services</span>
+              <h3>Jeff Sikes Chimney Services</h3>
+              <p>
+                Professional chimney services site built to generate leads and establish
+                trust. Clean, service-focused design with clear calls to action.
+              </p>
+              <a href="https://www.jeffsikeschimneyservices.com" target="_blank" rel="noopener noreferrer"
                  class="btn btn-primary">
                 Visit Live Site <i class="fa-solid fa-arrow-up-right-from-square"></i>
               </a>
@@ -171,33 +203,8 @@
             </div>
           </div>
 
-          <!-- ILM Handyman -->
-          <div class="portfolio-card reveal reveal-delay-2">
-            <div class="portfolio-thumb" style="background:#2b2b2b;">
-              <img src="assets/images/screenshots/ilm-handyman.jpg"
-                   alt="ILM Handyman — contractor website with services, about, and quote request form"
-                   width="1365" height="598"
-                   loading="lazy"
-                   onerror="this.parentElement.innerHTML='<span style=\'font-size:0.9rem;color:rgba(255,255,255,0.6);padding:1rem;text-align:center;\'>Screenshot: ILM Handyman</span>';" />
-            </div>
-            <div class="portfolio-card-body">
-              <span class="badge-pill badge-concept">Concept Project</span>
-              <span class="portfolio-tag">Home Services</span>
-              <span class="portfolio-category">General Contracting &middot; Wilmington, NC</span>
-              <h3>ILM Handyman</h3>
-              <p>
-                Full contractor site with services, about, and quote request form.
-                Dark, trust-heavy design built for the trades market.
-              </p>
-              <a href="https://jervin1616.github.io/ILMHandyMan/" target="_blank" rel="noopener noreferrer"
-                 class="btn btn-primary">
-                Visit Live Site <i class="fa-solid fa-arrow-up-right-from-square"></i>
-              </a>
-            </div>
-          </div>
-
           <!-- Coastal Clean Co -->
-          <div class="portfolio-card reveal reveal-delay-3">
+          <div class="portfolio-card reveal reveal-delay-2">
             <div class="portfolio-thumb" style="background:#E8F4FD;">
               <img src="assets/images/screenshots/coastal-clean-co.jpg"
                    alt="Coastal Clean Co — residential cleaning service website with quote request flow and team section"
@@ -223,7 +230,7 @@
           </div>
 
           <!-- Saltline Co -->
-          <div class="portfolio-card reveal reveal-delay-4">
+          <div class="portfolio-card reveal reveal-delay-3">
             <div class="portfolio-thumb" style="background:#F2EDE4;">
               <img src="assets/images/screenshots/saltline-co.jpg"
                    alt="Saltline Co — e-commerce storefront with cart, product filtering, and product detail pages"
