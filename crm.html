@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prospect CRM | Rising Tide Digital</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:           #0b1628;
+      --surface:      #0f2044;
+      --surface-alt:  #162952;
+      --surface-hov:  #1a3260;
+      --accent:       #1a8fd1;
+      --accent-dk:    #1478b5;
+      --text:         #e8dccc;
+      --text-muted:   #8fa8c8;
+      --border:       #1e3d66;
+      --gold:         #d4a030;
+      --danger:       #e05252;
+      --success:      #2eaa6e;
+      --radius:       8px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      font-size: 15px;
+      line-height: 1.5;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Bebas Neue', cursive;
+      letter-spacing: 0.05em;
+    }
+
+    /* ── Header ─────────────────────────────────────────────── */
+    .site-header {
+      background: var(--surface);
+      border-bottom: 2px solid var(--accent);
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+    .site-header h1 { font-size: 2rem; color: var(--accent); line-height: 1; }
+    .site-header .subtitle { color: var(--text-muted); font-size: 0.82rem; margin-top: 2px; }
+
+    .container {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 24px 20px 48px;
+    }
+
+    /* ── Stats ──────────────────────────────────────────────── */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .stat-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px 12px;
+      text-align: center;
+    }
+    .stat-label {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 4px;
+    }
+    .stat-value {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 2.1rem;
+      line-height: 1;
+    }
+    .c-default .stat-value { color: var(--text); }
+    .c-blue    .stat-value { color: var(--accent); }
+    .c-green   .stat-value { color: var(--success); }
+    .c-gold    .stat-value { color: var(--gold); }
+    .c-week    .stat-value { color: var(--text); }
+
+    /* ── Progress ───────────────────────────────────────────── */
+    .progress-section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px 20px;
+      margin-bottom: 24px;
+    }
+    .progress-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 10px;
+    }
+    .progress-header h3 { font-size: 1.05rem; }
+    .progress-count { font-family: 'Bebas Neue', cursive; font-size: 1.4rem; color: var(--accent); }
+    .progress-track { background: var(--border); border-radius: 100px; height: 10px; overflow: hidden; }
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent), #5bc8f5);
+      border-radius: 100px;
+      transition: width 0.45s ease;
+    }
+    .progress-fill.done { background: linear-gradient(90deg, var(--success), #5be8a0); }
+
+    /* ── Tabs ───────────────────────────────────────────────── */
+    .tabs {
+      display: flex;
+      gap: 2px;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 20px;
+    }
+    .tab-btn {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1.15rem;
+      letter-spacing: 0.04em;
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      padding: 10px 22px;
+      cursor: pointer;
+      border-bottom: 3px solid transparent;
+      margin-bottom: -2px;
+      transition: color .2s, border-color .2s;
+    }
+    .tab-btn:hover { color: var(--text); }
+    .tab-btn.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+    .tab-pane { display: none; }
+    .tab-pane.active { display: block; }
+
+    /* ── Controls ───────────────────────────────────────────── */
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 14px;
+      align-items: center;
+    }
+    .controls-left {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      flex: 1;
+      min-width: 0;
+    }
+    .controls-right { display: flex; gap: 10px; flex-shrink: 0; }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="date"],
+    select,
+    textarea {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      color: var(--text);
+      padding: 8px 12px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color .2s;
+      color-scheme: dark;
+    }
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    input[type="tel"]:focus,
+    input[type="date"]:focus,
+    select:focus,
+    textarea:focus { border-color: var(--accent); }
+
+    input::placeholder, textarea::placeholder { color: var(--text-muted); }
+    select option { background: #0f2044; }
+
+    .search-input { min-width: 180px; flex: 1; max-width: 280px; }
+
+    .btn {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 600;
+      padding: 8px 16px;
+      border: none;
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: background .2s, transform .1s;
+      white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .btn:active { transform: scale(0.97); }
+    .btn-primary   { background: var(--accent); color: #fff; }
+    .btn-primary:hover  { background: var(--accent-dk); }
+    .btn-secondary { background: var(--surface-alt); color: var(--text); border: 1px solid var(--border); }
+    .btn-secondary:hover { background: var(--surface-hov); }
+    .btn-danger    { background: var(--danger); color: #fff; }
+    .btn-danger:hover { background: #c94040; }
+    .btn-sm { padding: 5px 10px; font-size: 0.8rem; }
+
+    /* ── Table ──────────────────────────────────────────────── */
+    .table-wrap {
+      overflow-x: auto;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+    }
+    table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+
+    th {
+      background: var(--surface-alt);
+      color: var(--text-muted);
+      text-align: left;
+      padding: 11px 14px;
+      font-weight: 600;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      cursor: pointer;
+      user-select: none;
+      white-space: nowrap;
+      transition: color .2s;
+    }
+    th:hover { color: var(--text); }
+    th.sorted { color: var(--accent); }
+    th .si { margin-left: 3px; font-size: 0.68rem; }
+    th.nosort { cursor: default; }
+    th.nosort:hover { color: var(--text-muted); }
+
+    td {
+      padding: 10px 14px;
+      border-top: 1px solid var(--border);
+      vertical-align: top;
+    }
+    tr:hover td { background: rgba(26,143,209,0.04); }
+
+    .td-contact-sub { font-size: 0.75rem; color: var(--text-muted); }
+    .td-notes { max-width: 180px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+    /* badges */
+    .badge {
+      display: inline-block;
+      padding: 2px 9px;
+      border-radius: 100px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .badge-New          { background: rgba(26,143,209,.15); color: #5bc8f5; }
+    .badge-Contacted    { background: rgba(92,163,231,.2);  color: #7ccfff; }
+    .badge-FollowedUp   { background: rgba(155,89,182,.2);  color: #c39bd3; }
+    .badge-Conversation { background: rgba(212,160,48,.2);  color: var(--gold); }
+    .badge-Closed       { background: rgba(46,170,110,.2);  color: var(--success); }
+    .badge-Dead         { background: rgba(224,82,82,.15);  color: var(--danger); }
+
+    /* follow-up date coloring */
+    .fu-today    { color: var(--gold); font-weight: 600; }
+    .fu-overdue  { color: var(--danger); font-weight: 600; }
+    .fu-upcoming { color: var(--text); }
+
+    .empty-state {
+      text-align: center;
+      padding: 56px 20px;
+      color: var(--text-muted);
+    }
+    .empty-state h3 { font-size: 1.4rem; margin-bottom: 6px; }
+
+    /* ── Modal ──────────────────────────────────────────────── */
+    .overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.72);
+      z-index: 1000;
+      overflow-y: auto;
+      padding: 20px;
+    }
+    .overlay.active { display: flex; align-items: flex-start; justify-content: center; }
+
+    .modal {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      width: 100%;
+      max-width: 580px;
+      margin: auto;
+      padding: 28px;
+    }
+    .modal-hd {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 22px;
+    }
+    .modal-hd h2 { font-size: 1.7rem; color: var(--accent); }
+    .modal-close {
+      background: none; border: none; color: var(--text-muted);
+      font-size: 1.6rem; cursor: pointer; padding: 2px 8px; line-height: 1;
+    }
+    .modal-close:hover { color: var(--text); }
+
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+    .fg { display: flex; flex-direction: column; gap: 5px; }
+    .fg.full { grid-column: 1 / -1; }
+    .fg label {
+      font-size: 0.73rem; font-weight: 600;
+      color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em;
+    }
+    .fg input, .fg select, .fg textarea {
+      background: var(--bg); width: 100%;
+    }
+    .fg textarea { resize: vertical; min-height: 80px; }
+
+    .modal-ft {
+      display: flex; gap: 10px; justify-content: flex-end; margin-top: 22px;
+    }
+
+    /* ── Confirm dialog ─────────────────────────────────────── */
+    .confirm-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      max-width: 360px;
+      text-align: center;
+      margin: auto;
+    }
+    .confirm-box h3 { font-size: 1.5rem; color: var(--danger); margin-bottom: 10px; }
+    .confirm-box p  { color: var(--text-muted); font-size: 0.88rem; margin-bottom: 20px; }
+    .confirm-actions { display: flex; gap: 10px; justify-content: center; }
+
+    /* ── Email Templates ────────────────────────────────────── */
+    .templates-grid { display: grid; gap: 20px; }
+    .tpl-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+    }
+    .tpl-hd {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 14px;
+    }
+    .tpl-hd h3        { font-size: 1.35rem; color: var(--accent); }
+    .tpl-hd .tpl-desc { font-size: 0.78rem; color: var(--text-muted); margin-top: 2px; }
+    .tpl-subj {
+      font-size: 0.78rem; color: var(--text-muted);
+      font-style: italic; margin-bottom: 10px;
+    }
+    .tpl-body {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 14px 16px;
+      font-size: 0.875rem;
+      line-height: 1.75;
+      white-space: pre-wrap;
+    }
+    .copy-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.83rem;
+      font-weight: 600;
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 7px 14px;
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: all .2s;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .copy-btn:hover { background: var(--surface-hov); border-color: var(--accent); color: var(--accent); }
+    .copy-btn.copied { background: rgba(46,170,110,.12); border-color: var(--success); color: var(--success); }
+
+    /* ── Search Strings ─────────────────────────────────────── */
+    .ss-note {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: var(--radius);
+      padding: 10px 14px;
+      margin-bottom: 16px;
+    }
+    .ss-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 10px;
+    }
+    .ss-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 12px 14px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      transition: all .2s;
+    }
+    .ss-card:hover { border-color: var(--accent); background: var(--surface-alt); }
+    .ss-card.copied { border-color: var(--success); background: rgba(46,170,110,.07); }
+    .ss-text  { font-size: 0.85rem; font-weight: 500; }
+    .ss-icon  { font-size: 0.85rem; color: var(--text-muted); flex-shrink: 0; }
+
+    /* ── Toast ──────────────────────────────────────────────── */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--success);
+      color: var(--text);
+      padding: 11px 18px;
+      border-radius: var(--radius);
+      font-size: 0.875rem;
+      font-weight: 500;
+      z-index: 2000;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: all .3s;
+      pointer-events: none;
+    }
+    .toast.show { opacity: 1; transform: translateY(0); }
+
+    /* ── Responsive ─────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .stats-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .form-grid  { grid-template-columns: 1fr; }
+      .fg.full    { grid-column: 1; }
+      .controls   { flex-direction: column; align-items: stretch; }
+      .controls-right { flex-wrap: wrap; }
+      .search-input { max-width: 100%; }
+      .modal { padding: 18px; }
+      .tab-btn { font-size: 0.95rem; padding: 8px 12px; }
+      .tpl-hd { flex-direction: column; }
+      .site-header h1 { font-size: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div>
+    <h1>Rising Tide Digital</h1>
+    <div class="subtitle">Prospect CRM &mdash; Wilmington, NC</div>
+  </div>
+</header>
+
+<main class="container">
+
+  <!-- ── Stats Dashboard ── -->
+  <div class="stats-grid">
+    <div class="stat-card c-default">
+      <div class="stat-label">Total Prospects</div>
+      <div class="stat-value" id="s-total">0</div>
+    </div>
+    <div class="stat-card c-default">
+      <div class="stat-label">Contacted</div>
+      <div class="stat-value" id="s-contacted">0</div>
+    </div>
+    <div class="stat-card c-blue">
+      <div class="stat-label">In Conversation</div>
+      <div class="stat-value" id="s-conv">0</div>
+    </div>
+    <div class="stat-card c-green">
+      <div class="stat-label">Closed</div>
+      <div class="stat-value" id="s-closed">0</div>
+    </div>
+    <div class="stat-card c-gold">
+      <div class="stat-label">Revenue</div>
+      <div class="stat-value" id="s-revenue">$0</div>
+    </div>
+    <div class="stat-card c-week">
+      <div class="stat-label">This Week</div>
+      <div class="stat-value" id="s-week">0/5</div>
+    </div>
+  </div>
+
+  <!-- ── Weekly Progress Bar ── -->
+  <div class="progress-section">
+    <div class="progress-header">
+      <h3>Weekly Outreach Goal</h3>
+      <span class="progress-count" id="prog-text">0 / 5 this week</span>
+    </div>
+    <div class="progress-track">
+      <div class="progress-fill" id="prog-fill" style="width:0%"></div>
+    </div>
+  </div>
+
+  <!-- ── Tabs ── -->
+  <nav class="tabs">
+    <button class="tab-btn active" data-tab="prospects">Prospects</button>
+    <button class="tab-btn" data-tab="templates">Email Templates</button>
+    <button class="tab-btn" data-tab="search-strings">Search Strings</button>
+  </nav>
+
+  <!-- ══════════════════ PROSPECTS TAB ══════════════════ -->
+  <div class="tab-pane active" id="tab-prospects">
+    <div class="controls">
+      <div class="controls-left">
+        <input type="text" class="search-input" id="search-input" placeholder="Search business or contact…" />
+        <select id="filter-status">
+          <option value="">All Statuses</option>
+          <option>New</option><option>Contacted</option><option>Followed Up</option>
+          <option>Conversation</option><option>Closed</option><option>Dead</option>
+        </select>
+        <select id="filter-vertical">
+          <option value="">All Verticals</option>
+          <option>Handyman</option><option>Pressure Washing</option><option>Gutter Cleaning</option>
+          <option>Lawn Care</option><option>House Painting</option><option>Flooring</option>
+          <option>Fence Installation</option><option>Roofing</option><option>HVAC</option>
+          <option>Plumbing</option><option>Electrical</option><option>Cleaning Service</option>
+          <option>Junk Removal</option><option>Moving</option><option>Pool Service</option>
+          <option>Pest Control</option><option>Concrete</option><option>Tree Service</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="controls-right">
+        <button class="btn btn-secondary" id="export-btn">Export CSV</button>
+        <button class="btn btn-primary" id="add-btn">+ Add Prospect</button>
+      </div>
+    </div>
+
+    <div class="table-wrap">
+      <table id="prospects-table">
+        <thead>
+          <tr>
+            <th data-col="businessName">Business Name <span class="si"></span></th>
+            <th data-col="vertical">Vertical <span class="si"></span></th>
+            <th data-col="contactName">Contact <span class="si"></span></th>
+            <th data-col="status">Status <span class="si"></span></th>
+            <th data-col="dateContacted">Date Contacted <span class="si"></span></th>
+            <th data-col="followUpDate">Follow Up <span class="si"></span></th>
+            <th class="nosort">Notes</th>
+            <th class="nosort">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="prospects-body"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ══════════════════ EMAIL TEMPLATES TAB ══════════════════ -->
+  <div class="tab-pane" id="tab-templates">
+    <div class="templates-grid" id="templates-container"></div>
+  </div>
+
+  <!-- ══════════════════ SEARCH STRINGS TAB ══════════════════ -->
+  <div class="tab-pane" id="tab-search-strings">
+    <p class="ss-note">Click any card to copy the search string to your clipboard, then paste it into Google Maps to find local prospects.</p>
+    <div class="ss-grid" id="ss-container"></div>
+  </div>
+
+</main>
+
+<!-- ── Add / Edit Modal ── -->
+<div class="overlay" id="modal-overlay">
+  <div class="modal">
+    <div class="modal-hd">
+      <h2 id="modal-title">Add Prospect</h2>
+      <button class="modal-close" id="modal-close" aria-label="Close">&times;</button>
+    </div>
+    <form id="prospect-form" novalidate>
+      <div class="form-grid">
+        <div class="fg full">
+          <label>Business Name *</label>
+          <input type="text" name="businessName" required placeholder="Acme Handyman Services" />
+        </div>
+        <div class="fg">
+          <label>Owner / Contact Name</label>
+          <input type="text" name="contactName" placeholder="John Smith" />
+        </div>
+        <div class="fg">
+          <label>Email</label>
+          <input type="email" name="email" placeholder="john@example.com" />
+        </div>
+        <div class="fg">
+          <label>Phone</label>
+          <input type="tel" name="phone" placeholder="(910) 555-0100" />
+        </div>
+        <div class="fg">
+          <label>Vertical</label>
+          <select name="vertical">
+            <option value="">Select vertical</option>
+            <option>Handyman</option><option>Pressure Washing</option><option>Gutter Cleaning</option>
+            <option>Lawn Care</option><option>House Painting</option><option>Flooring</option>
+            <option>Fence Installation</option><option>Roofing</option><option>HVAC</option>
+            <option>Plumbing</option><option>Electrical</option><option>Cleaning Service</option>
+            <option>Junk Removal</option><option>Moving</option><option>Pool Service</option>
+            <option>Pest Control</option><option>Concrete</option><option>Tree Service</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="fg">
+          <label>Source</label>
+          <select name="source">
+            <option value="">Select source</option>
+            <option>Google Maps</option><option>Facebook</option><option>Referral</option>
+            <option>Walk-in</option><option>Other</option>
+          </select>
+        </div>
+        <div class="fg">
+          <label>Status</label>
+          <select name="status">
+            <option>New</option><option>Contacted</option><option>Followed Up</option>
+            <option>Conversation</option><option>Closed</option><option>Dead</option>
+          </select>
+        </div>
+        <div class="fg">
+          <label>Date Contacted</label>
+          <input type="date" name="dateContacted" />
+        </div>
+        <div class="fg full">
+          <label>Notes</label>
+          <textarea name="notes" placeholder="Additional notes…"></textarea>
+        </div>
+      </div>
+      <div class="modal-ft">
+        <button type="button" class="btn btn-secondary" id="modal-cancel">Cancel</button>
+        <button type="submit" class="btn btn-primary" id="modal-submit">Save Prospect</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ── Delete Confirm ── -->
+<div class="overlay" id="confirm-overlay">
+  <div class="confirm-box">
+    <h3>Delete Prospect?</h3>
+    <p>This will permanently remove this prospect. This action cannot be undone.</p>
+    <div class="confirm-actions">
+      <button class="btn btn-secondary" id="confirm-cancel">Cancel</button>
+      <button class="btn btn-danger" id="confirm-delete">Delete</button>
+    </div>
+  </div>
+</div>
+
+<!-- ── Toast ── -->
+<div class="toast" id="toast"></div>
+
+<script>
+/* ─── Constants ──────────────────────────────────────────────────────────────*/
+const STORAGE_KEY = 'rtd_crm_v1';
+const WEEK_GOAL   = 5;
+const REVENUE_PER = 800;
+
+const VERTICALS = [
+  'Handyman','Pressure Washing','Gutter Cleaning','Lawn Care','House Painting',
+  'Flooring','Fence Installation','Roofing','HVAC','Plumbing','Electrical',
+  'Cleaning Service','Junk Removal','Moving','Pool Service','Pest Control',
+  'Concrete','Tree Service','Other'
+];
+
+/* ─── State ──────────────────────────────────────────────────────────────────*/
+let prospects = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+let editingId  = null;
+let deleteId   = null;
+let sortCol    = null;
+let sortDir    = 'asc';
+
+/* ─── Persistence ────────────────────────────────────────────────────────────*/
+function save() { localStorage.setItem(STORAGE_KEY, JSON.stringify(prospects)); }
+
+function uid() { return Date.now().toString(36) + Math.random().toString(36).slice(2); }
+
+/* ─── Date helpers ───────────────────────────────────────────────────────────*/
+function todayISO() { return new Date().toISOString().slice(0, 10); }
+
+function addDays(iso, n) {
+  if (!iso) return '';
+  const d = new Date(iso + 'T00:00:00');
+  d.setDate(d.getDate() + n);
+  return d.toISOString().slice(0, 10);
+}
+
+function fmtDate(iso) {
+  if (!iso) return '—';
+  const [y, m, d] = iso.split('-');
+  return `${m}/${d}/${y}`;
+}
+
+function weekBounds() {
+  const now  = new Date();
+  const day  = now.getDay();
+  const diff = day === 0 ? -6 : 1 - day;
+  const mon  = new Date(now);
+  mon.setDate(now.getDate() + diff);
+  const sun  = new Date(mon);
+  sun.setDate(mon.getDate() + 6);
+  return [mon.toISOString().slice(0,10), sun.toISOString().slice(0,10)];
+}
+
+function isThisWeek(iso) {
+  if (!iso) return false;
+  const [start, end] = weekBounds();
+  return iso >= start && iso <= end;
+}
+
+/* ─── Stats ──────────────────────────────────────────────────────────────────*/
+function renderStats() {
+  const total    = prospects.length;
+  const contacted = prospects.filter(p => p.status === 'Contacted').length;
+  const conv     = prospects.filter(p => p.status === 'Conversation').length;
+  const closed   = prospects.filter(p => p.status === 'Closed').length;
+  const revenue  = closed * REVENUE_PER;
+  const week     = prospects.filter(p => isThisWeek(p.dateContacted)).length;
+
+  $('s-total').textContent    = total;
+  $('s-contacted').textContent = contacted;
+  $('s-conv').textContent     = conv;
+  $('s-closed').textContent   = closed;
+  $('s-revenue').textContent  = '$' + revenue.toLocaleString();
+  $('s-week').textContent     = week + '/' + WEEK_GOAL;
+
+  const pct = Math.min(100, (week / WEEK_GOAL) * 100);
+  const fill = $('prog-fill');
+  fill.style.width = pct + '%';
+  fill.className   = 'progress-fill' + (week >= WEEK_GOAL ? ' done' : '');
+  $('prog-text').textContent = week + ' / ' + WEEK_GOAL + ' this week';
+}
+
+/* ─── Badge ──────────────────────────────────────────────────────────────────*/
+function badge(status) {
+  const key = status.replace(/\s+/g, '');
+  return `<span class="badge badge-${key}">${esc(status)}</span>`;
+}
+
+/* ─── Follow-up class ────────────────────────────────────────────────────────*/
+function fuClass(iso) {
+  if (!iso) return '';
+  const today = todayISO();
+  if (iso === today) return 'fu-today';
+  if (iso < today)  return 'fu-overdue';
+  return 'fu-upcoming';
+}
+
+/* ─── Table ──────────────────────────────────────────────────────────────────*/
+function filtered() {
+  const q  = $('search-input').value.toLowerCase();
+  const st = $('filter-status').value;
+  const vt = $('filter-vertical').value;
+
+  return prospects.filter(p =>
+    (!q  || p.businessName.toLowerCase().includes(q) || (p.contactName||'').toLowerCase().includes(q)) &&
+    (!st || p.status   === st) &&
+    (!vt || p.vertical === vt)
+  );
+}
+
+function sorted(list) {
+  if (!sortCol) return list;
+  return [...list].sort((a, b) => {
+    const av = (a[sortCol] || '').toLowerCase();
+    const bv = (b[sortCol] || '').toLowerCase();
+    return sortDir === 'asc' ? av.localeCompare(bv) : bv.localeCompare(av);
+  });
+}
+
+function renderTable() {
+  /* sort indicators */
+  document.querySelectorAll('#prospects-table th[data-col]').forEach(th => {
+    const col = th.dataset.col;
+    const si  = th.querySelector('.si');
+    th.classList.toggle('sorted', col === sortCol);
+    si.textContent = col === sortCol ? (sortDir === 'asc' ? '↑' : '↓') : '';
+  });
+
+  const list = sorted(filtered());
+  const body = $('prospects-body');
+
+  if (!list.length) {
+    body.innerHTML = `<tr><td colspan="8">
+      <div class="empty-state">
+        <h3>No prospects found</h3>
+        <p>Add your first prospect or adjust the filters.</p>
+      </div></td></tr>`;
+    return;
+  }
+
+  body.innerHTML = list.map(p => {
+    const fc = fuClass(p.followUpDate);
+    const fu = p.followUpDate
+      ? `<span class="${fc}">${fmtDate(p.followUpDate)}</span>`
+      : '—';
+    return `<tr>
+      <td><strong>${esc(p.businessName)}</strong></td>
+      <td>${esc(p.vertical || '—')}</td>
+      <td>
+        <div>${esc(p.contactName || '—')}</div>
+        ${p.email ? `<div class="td-contact-sub">${esc(p.email)}</div>` : ''}
+        ${p.phone ? `<div class="td-contact-sub">${esc(p.phone)}</div>` : ''}
+      </td>
+      <td>${badge(p.status)}</td>
+      <td>${fmtDate(p.dateContacted)}</td>
+      <td>${fu}</td>
+      <td class="td-notes" title="${esc(p.notes || '')}">${esc(p.notes || '—')}</td>
+      <td>
+        <div style="display:flex;gap:6px">
+          <button class="btn btn-secondary btn-sm" onclick="openEdit('${p.id}')">Edit</button>
+          <button class="btn btn-danger btn-sm"    onclick="askDelete('${p.id}')">Del</button>
+        </div>
+      </td>
+    </tr>`;
+  }).join('');
+}
+
+/* ─── Sort headers ───────────────────────────────────────────────────────────*/
+document.querySelectorAll('#prospects-table th[data-col]').forEach(th => {
+  th.addEventListener('click', () => {
+    const col = th.dataset.col;
+    sortDir = sortCol === col && sortDir === 'asc' ? 'desc' : 'asc';
+    sortCol = col;
+    renderTable();
+  });
+});
+
+/* ─── Filter / search ────────────────────────────────────────────────────────*/
+$('search-input').addEventListener('input', renderTable);
+$('filter-status').addEventListener('change', renderTable);
+$('filter-vertical').addEventListener('change', renderTable);
+
+/* ─── Tabs ───────────────────────────────────────────────────────────────────*/
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const tab = btn.dataset.tab;
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('tab-' + tab).classList.add('active');
+  });
+});
+
+/* ─── Modal open/close ───────────────────────────────────────────────────────*/
+function openAdd() {
+  editingId = null;
+  $('modal-title').textContent  = 'Add Prospect';
+  $('modal-submit').textContent = 'Save Prospect';
+  $('prospect-form').reset();
+  $('modal-overlay').classList.add('active');
+}
+
+function openEdit(id) {
+  editingId = id;
+  const p = prospects.find(x => x.id === id);
+  if (!p) return;
+  $('modal-title').textContent  = 'Edit Prospect';
+  $('modal-submit').textContent = 'Update Prospect';
+  const form = $('prospect-form');
+  form.reset();
+  Object.keys(p).forEach(k => {
+    const el = form.elements[k];
+    if (el) el.value = p[k] || '';
+  });
+  $('modal-overlay').classList.add('active');
+}
+
+function closeModal() {
+  $('modal-overlay').classList.remove('active');
+  editingId = null;
+}
+
+$('add-btn').addEventListener('click', openAdd);
+$('modal-close').addEventListener('click', closeModal);
+$('modal-cancel').addEventListener('click', closeModal);
+$('modal-overlay').addEventListener('click', e => { if (e.target === $('modal-overlay')) closeModal(); });
+
+/* ─── Form submit ────────────────────────────────────────────────────────────*/
+$('prospect-form').addEventListener('submit', e => {
+  e.preventDefault();
+  const form = e.target;
+  const data = Object.fromEntries(new FormData(form));
+
+  /* auto follow-up: +5 days when status = Contacted */
+  if (data.status === 'Contacted' && data.dateContacted) {
+    data.followUpDate = addDays(data.dateContacted, 5);
+  } else if (editingId) {
+    const cur = prospects.find(p => p.id === editingId);
+    data.followUpDate = cur ? cur.followUpDate || '' : '';
+  } else {
+    data.followUpDate = '';
+  }
+
+  if (editingId) {
+    const idx = prospects.findIndex(p => p.id === editingId);
+    if (idx > -1) prospects[idx] = { ...prospects[idx], ...data };
+  } else {
+    prospects.push({ id: uid(), ...data });
+  }
+
+  save();
+  renderTable();
+  renderStats();
+  closeModal();
+  toast(editingId ? 'Prospect updated.' : 'Prospect added.');
+});
+
+/* ─── Delete ─────────────────────────────────────────────────────────────────*/
+function askDelete(id) {
+  deleteId = id;
+  $('confirm-overlay').classList.add('active');
+}
+
+$('confirm-cancel').addEventListener('click', () => {
+  $('confirm-overlay').classList.remove('active');
+  deleteId = null;
+});
+
+$('confirm-delete').addEventListener('click', () => {
+  if (deleteId) {
+    prospects = prospects.filter(p => p.id !== deleteId);
+    save();
+    renderTable();
+    renderStats();
+    toast('Prospect deleted.');
+  }
+  $('confirm-overlay').classList.remove('active');
+  deleteId = null;
+});
+
+/* ─── CSV Export ─────────────────────────────────────────────────────────────*/
+$('export-btn').addEventListener('click', () => {
+  const list = sorted(filtered());
+  const cols = ['businessName','contactName','email','phone','vertical','source','status','dateContacted','followUpDate','notes'];
+  const hdrs = ['Business Name','Contact','Email','Phone','Vertical','Source','Status','Date Contacted','Follow Up','Notes'];
+  const rows = list.map(p =>
+    cols.map(c => `"${(p[c]||'').replace(/"/g,'""')}"`).join(',')
+  );
+  const csv  = [hdrs.join(','), ...rows].join('\n');
+  const url  = URL.createObjectURL(new Blob([csv], { type: 'text/csv' }));
+  const a    = document.createElement('a');
+  a.href     = url;
+  a.download = 'prospects-' + todayISO() + '.csv';
+  a.click();
+  URL.revokeObjectURL(url);
+});
+
+/* ─── Toast ──────────────────────────────────────────────────────────────────*/
+let toastTimer;
+function toast(msg) {
+  const el = $('toast');
+  el.textContent = msg;
+  el.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => el.classList.remove('show'), 2600);
+}
+
+/* ─── Clipboard helper ───────────────────────────────────────────────────────*/
+function copyText(text) {
+  if (navigator.clipboard) return navigator.clipboard.writeText(text);
+  const ta = document.createElement('textarea');
+  ta.value = text;
+  ta.style.cssText = 'position:fixed;opacity:0;top:0;left:0';
+  document.body.appendChild(ta);
+  ta.select();
+  document.execCommand('copy');
+  document.body.removeChild(ta);
+  return Promise.resolve();
+}
+
+/* ─── Email Templates ────────────────────────────────────────────────────────*/
+const TEMPLATES = [
+  {
+    id: 'a',
+    title: 'Template A — No Website',
+    desc:  'For businesses with no web presence at all',
+    subject: 'A quick note about [Business Name]',
+    body: `Hi [Name],
+
+I was searching for [vertical] services in Wilmington, NC and came across your business — but I couldn't find a website for you.
+
+That's actually a big opportunity. Most of your potential customers are searching Google before they call anyone, and without a website, they're finding your competitors instead.
+
+I build fast, professional websites for local service businesses in Wilmington for a flat $800 — no monthly fees, no surprises, live within a week.
+
+Would you be open to a quick 10-minute call to see if it's a fit?
+
+Joseph
+Rising Tide Digital
+risingtidedigital.us`
+  },
+  {
+    id: 'b',
+    title: 'Template B — Has Facebook',
+    desc:  'For businesses using Facebook as their only web presence',
+    subject: 'Found you on Facebook — quick question',
+    body: `Hi [Name],
+
+I found [Business Name] on Facebook and wanted to reach out. Great page — but I noticed you don't have a standalone website, which means customers searching Google for [vertical] in Wilmington are finding your competitors who do.
+
+A dedicated website gives you 24/7 visibility that Facebook just can't match. I build custom, mobile-ready websites for local service businesses in Wilmington for $800 flat — one time, no monthly fees.
+
+Worth a quick 10-minute call?
+
+Joseph
+Rising Tide Digital
+risingtidedigital.us`
+  },
+  {
+    id: 'c',
+    title: 'Template C — Bad Website',
+    desc:  'For businesses with an outdated or mobile-unfriendly site',
+    subject: 'Quick note about your website',
+    body: `Hi [Name],
+
+I came across [Business Name]'s website while searching for [vertical] services in Wilmington and wanted to reach out — I think there's a real opportunity to get you more calls with a modern update.
+
+Older websites tend to load slowly and look rough on phones, which pushes potential customers away before they ever contact you. I build fast, mobile-first websites for local service businesses in Wilmington for $800 flat.
+
+I'd love to show you what a refresh could look like — open for a quick 10-minute call?
+
+Joseph
+Rising Tide Digital
+risingtidedigital.us`
+  },
+  {
+    id: 'f',
+    title: 'Template F — Follow Up',
+    desc:  'One-sentence follow-up sent 5 days after no response',
+    subject: '(Reply to original thread — same subject line)',
+    body: `Hi [Name], just wanted to bump this up in case it got buried — still happy to chat whenever the timing works for you.
+
+Joseph
+Rising Tide Digital
+risingtidedigital.us`
+  }
+];
+
+const COPY_SVG = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>`;
+const CHECK_SVG = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>`;
+
+function renderTemplates() {
+  document.getElementById('templates-container').innerHTML = TEMPLATES.map(t => `
+    <div class="tpl-card">
+      <div class="tpl-hd">
+        <div>
+          <h3>${t.title}</h3>
+          <div class="tpl-desc">${t.desc}</div>
+        </div>
+        <button class="copy-btn" id="copy-${t.id}" onclick="copyTemplate('${t.id}')">
+          ${COPY_SVG} Copy
+        </button>
+      </div>
+      <div class="tpl-subj">Subject: ${esc(t.subject)}</div>
+      <div class="tpl-body">${esc(t.body)}</div>
+    </div>
+  `).join('');
+}
+
+function copyTemplate(id) {
+  const t   = TEMPLATES.find(x => x.id === id);
+  const btn = document.getElementById('copy-' + id);
+  if (!t || !btn) return;
+  const text = 'Subject: ' + t.subject + '\n\n' + t.body;
+  copyText(text).then(() => {
+    btn.classList.add('copied');
+    btn.innerHTML = CHECK_SVG + ' Copied!';
+    setTimeout(() => {
+      btn.classList.remove('copied');
+      btn.innerHTML = COPY_SVG + ' Copy';
+    }, 2000);
+  });
+}
+
+/* ─── Search Strings ─────────────────────────────────────────────────────────*/
+const SEARCH_STRINGS = [
+  /* Handyman */
+  'handyman Wilmington NC',
+  'handyman Leland NC',
+  'handyman Brunswick County NC',
+  /* Pressure Washing */
+  'pressure washing Wilmington NC',
+  'pressure washing Leland NC',
+  /* Gutter Cleaning */
+  'gutter cleaning Wilmington NC',
+  'gutter cleaning near Wilmington NC',
+  /* Lawn Care */
+  'lawn care Wilmington NC',
+  'lawn maintenance Wilmington NC',
+  'landscaping Wilmington NC',
+  /* House Painting */
+  'house painting Wilmington NC',
+  'interior painter Wilmington NC',
+  'exterior painter Wilmington NC',
+  /* Flooring */
+  'flooring contractor Wilmington NC',
+  'hardwood floor installation Wilmington NC',
+  /* Fence Installation */
+  'fence installation Wilmington NC',
+  'fence company Wilmington NC',
+  /* Roofing */
+  'roofing contractor Wilmington NC',
+  'roof repair Wilmington NC',
+  'roofing Leland NC',
+  /* HVAC */
+  'HVAC Wilmington NC',
+  'AC repair Wilmington NC',
+  'air conditioning service Wilmington NC',
+  /* Plumbing */
+  'plumber Wilmington NC',
+  'plumbing contractor Wilmington NC',
+  /* Electrical */
+  'electrician Wilmington NC',
+  'electrical contractor Wilmington NC',
+  /* Cleaning Service */
+  'house cleaning service Wilmington NC',
+  'maid service Wilmington NC',
+  'cleaning service Leland NC',
+  /* Junk Removal */
+  'junk removal Wilmington NC',
+  'junk hauling Wilmington NC',
+  /* Moving */
+  'moving company Wilmington NC',
+  'local movers Wilmington NC',
+  /* Pool Service */
+  'pool service Wilmington NC',
+  'pool cleaning Wilmington NC',
+  /* Pest Control */
+  'pest control Wilmington NC',
+  'exterminator Wilmington NC',
+  /* Concrete */
+  'concrete contractor Wilmington NC',
+  'concrete driveway Wilmington NC',
+  /* Tree Service */
+  'tree service Wilmington NC',
+  'tree removal Wilmington NC',
+  'tree trimming Wilmington NC',
+  /* Area variants */
+  'handyman Southport NC',
+  'lawn care Leland NC',
+  'pest control Leland NC',
+  'HVAC Leland NC',
+  'roofing Brunswick County NC',
+  'cleaning service Brunswick County NC',
+];
+
+function renderSearchStrings() {
+  document.getElementById('ss-container').innerHTML = SEARCH_STRINGS.map((s, i) => `
+    <div class="ss-card" id="ss-${i}" onclick="copySSCard(${i})">
+      <span class="ss-text">${esc(s)}</span>
+      <span class="ss-icon" id="ss-icon-${i}">📋</span>
+    </div>
+  `).join('');
+}
+
+function copySSCard(i) {
+  const str = SEARCH_STRINGS[i];
+  const card = document.getElementById('ss-' + i);
+  const icon = document.getElementById('ss-icon-' + i);
+  copyText(str).then(() => {
+    card.classList.add('copied');
+    icon.textContent = '✓';
+    setTimeout(() => {
+      card.classList.remove('copied');
+      icon.textContent = '📋';
+    }, 1800);
+  });
+}
+
+/* ─── Utility ────────────────────────────────────────────────────────────────*/
+function $(id) { return document.getElementById(id); }
+
+function esc(s) {
+  return String(s || '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+/* ─── Init ───────────────────────────────────────────────────────────────────*/
+renderStats();
+renderTable();
+renderTemplates();
+renderSearchStrings();
+</script>
+</body>
+</html>
