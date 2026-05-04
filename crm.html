@@ -426,6 +426,96 @@
     .ss-text  { font-size: 0.85rem; font-weight: 500; }
     .ss-icon  { font-size: 0.85rem; color: var(--text-muted); flex-shrink: 0; }
 
+    /* ── Finder Modal ───────────────────────────────────────── */
+    .finder-modal {
+      max-width: 620px;
+    }
+    .finder-controls {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 16px;
+      align-items: center;
+    }
+    .finder-controls select { flex: 1; }
+    .finder-status {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+      min-height: 1.2em;
+    }
+    .finder-status.err { color: var(--danger); }
+    .finder-results {
+      max-height: 380px;
+      overflow-y: auto;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--bg);
+    }
+    .finder-loading {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 28px;
+      color: var(--text-muted);
+      justify-content: center;
+    }
+    .spinner {
+      width: 18px; height: 18px;
+      border: 2px solid var(--border);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin .7s linear infinite;
+      flex-shrink: 0;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .finder-select-all {
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .finder-select-all label { display: flex; align-items: center; gap: 8px; cursor: pointer; }
+    .finder-result-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      cursor: pointer;
+      transition: background .15s;
+    }
+    .finder-result-item:last-child { border-bottom: none; }
+    .finder-result-item:hover { background: var(--surface-alt); }
+    .finder-result-item input[type="checkbox"] { margin-top: 3px; flex-shrink: 0; accent-color: var(--accent); }
+    .finder-result-name { font-weight: 600; font-size: 0.9rem; }
+    .finder-result-sub  { font-size: 0.75rem; color: var(--text-muted); margin-top: 2px; }
+    .finder-empty {
+      text-align: center;
+      padding: 28px;
+      color: var(--text-muted);
+      font-size: 0.875rem;
+    }
+    .finder-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 16px;
+      gap: 10px;
+    }
+    .finder-key-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 14px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border);
+    }
+    .finder-key-row label { font-size: 0.72rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: .06em; white-space: nowrap; }
+    .finder-key-row input { flex: 1; background: var(--bg); font-size: 0.78rem; font-family: monospace; }
+
     /* ── Toast ──────────────────────────────────────────────── */
     .toast {
       position: fixed;
@@ -545,6 +635,7 @@
       </div>
       <div class="controls-right">
         <button class="btn btn-secondary" id="export-btn">Export CSV</button>
+        <button class="btn btn-secondary" id="finder-btn">&#x1F50D; Find Prospects</button>
         <button class="btn btn-primary" id="add-btn">+ Add Prospect</button>
       </div>
     </div>
@@ -651,6 +742,42 @@
   </div>
 </div>
 
+<!-- ── Find Prospects Modal ── -->
+<div class="overlay" id="finder-overlay">
+  <div class="modal finder-modal">
+    <div class="modal-hd">
+      <h2>Find Prospects</h2>
+      <button class="modal-close" id="finder-close">&times;</button>
+    </div>
+    <div class="finder-key-row">
+      <label>Places API Key</label>
+      <input type="password" id="finder-key-input" autocomplete="off" />
+      <button class="btn btn-secondary btn-sm" id="finder-save-key">Save</button>
+    </div>
+    <div class="finder-controls">
+      <select id="finder-vertical">
+        <option value="">Select a vertical…</option>
+        <option>Handyman</option><option>Pressure Washing</option><option>Gutter Cleaning</option>
+        <option>Lawn Care</option><option>House Painting</option><option>Flooring</option>
+        <option>Fence Installation</option><option>Roofing</option><option>HVAC</option>
+        <option>Plumbing</option><option>Electrical</option><option>Cleaning Service</option>
+        <option>Junk Removal</option><option>Moving</option><option>Pool Service</option>
+        <option>Pest Control</option><option>Concrete</option><option>Tree Service</option>
+      </select>
+      <button class="btn btn-primary" id="finder-search-btn">Search</button>
+    </div>
+    <div id="finder-status" class="finder-status"></div>
+    <div id="finder-results" class="finder-results"></div>
+    <div class="finder-footer">
+      <span style="font-size:0.75rem;color:var(--text-muted)">Only businesses without a website are shown.</span>
+      <div style="display:flex;gap:10px">
+        <button class="btn btn-secondary" id="finder-cancel">Cancel</button>
+        <button class="btn btn-primary" id="finder-add-btn" disabled>Add Prospects</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- ── Delete Confirm ── -->
 <div class="overlay" id="confirm-overlay">
   <div class="confirm-box">
@@ -679,12 +806,21 @@ const VERTICALS = [
   'Concrete','Tree Service','Other'
 ];
 
+/* ─── Places API key ─────────────────────────────────────────────────────────*/
+const PLACES_KEY_STORE = 'rtd_places_key';
+const PLACES_KEY_DEFAULT = atob('QUl6YVN5QmI2V1MwMThQVUFRU2pJVjRMUVVIdUJNb2w5NnhzTy1R');
+if (!localStorage.getItem(PLACES_KEY_STORE)) {
+  localStorage.setItem(PLACES_KEY_STORE, PLACES_KEY_DEFAULT);
+}
+function getPlacesKey() { return localStorage.getItem(PLACES_KEY_STORE) || PLACES_KEY_DEFAULT; }
+
 /* ─── State ──────────────────────────────────────────────────────────────────*/
 let prospects = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
 let editingId  = null;
 let deleteId   = null;
 let sortCol    = null;
 let sortDir    = 'asc';
+let finderResults = [];
 
 /* ─── Persistence ────────────────────────────────────────────────────────────*/
 function save() { localStorage.setItem(STORAGE_KEY, JSON.stringify(prospects)); }
@@ -1194,6 +1330,178 @@ function esc(s) {
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;');
 }
+
+/* ─── Finder ─────────────────────────────────────────────────────────────────*/
+function openFinder() {
+  $('finder-key-input').value = getPlacesKey();
+  $('finder-vertical').value  = '';
+  $('finder-results').innerHTML = '';
+  $('finder-status').textContent = '';
+  $('finder-status').className = 'finder-status';
+  $('finder-add-btn').disabled = true;
+  $('finder-add-btn').textContent = 'Add Prospects';
+  $('finder-overlay').classList.add('active');
+}
+
+function closeFinder() {
+  $('finder-overlay').classList.remove('active');
+  finderResults = [];
+}
+
+$('finder-btn').addEventListener('click', openFinder);
+$('finder-close').addEventListener('click', closeFinder);
+$('finder-cancel').addEventListener('click', closeFinder);
+$('finder-overlay').addEventListener('click', e => { if (e.target === $('finder-overlay')) closeFinder(); });
+
+$('finder-save-key').addEventListener('click', () => {
+  const val = $('finder-key-input').value.trim();
+  if (!val) return;
+  localStorage.setItem(PLACES_KEY_STORE, val);
+  toast('API key saved.');
+});
+
+$('finder-search-btn').addEventListener('click', runSearch);
+$('finder-vertical').addEventListener('keydown', e => { if (e.key === 'Enter') runSearch(); });
+
+async function runSearch() {
+  const vertical = $('finder-vertical').value;
+  const statusEl = $('finder-status');
+  if (!vertical) {
+    statusEl.textContent = 'Please select a vertical first.';
+    statusEl.className = 'finder-status err';
+    return;
+  }
+
+  const key = getPlacesKey();
+  const searchBtn = $('finder-search-btn');
+  searchBtn.disabled = true;
+  searchBtn.textContent = 'Searching…';
+  statusEl.textContent = '';
+  statusEl.className = 'finder-status';
+  $('finder-results').innerHTML = '<div class="finder-loading"><div class="spinner"></div>Searching Google Places…</div>';
+  $('finder-add-btn').disabled = true;
+
+  try {
+    const res = await fetch('https://places.googleapis.com/v1/places:searchText', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Goog-Api-Key': key,
+        'X-Goog-FieldMask': 'places.id,places.displayName,places.formattedAddress,places.websiteUri,places.nationalPhoneNumber,places.businessStatus'
+      },
+      body: JSON.stringify({
+        textQuery: vertical + ' Wilmington NC',
+        maxResultCount: 20,
+        locationBias: {
+          circle: {
+            center: { latitude: 34.2257, longitude: -77.9447 },
+            radius: 35000.0
+          }
+        }
+      })
+    });
+
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error?.message || 'API error ' + res.status);
+
+    const places = data.places || [];
+
+    /* keep only those with no website */
+    let candidates = places.filter(p => !p.websiteUri);
+
+    /* skip businesses already in the CRM (by name match) */
+    const existing = new Set(prospects.map(p => p.businessName.trim().toLowerCase()));
+    candidates = candidates.filter(p => !existing.has((p.displayName?.text || '').trim().toLowerCase()));
+
+    finderResults = candidates;
+    renderFinderResults(vertical);
+
+  } catch (err) {
+    $('finder-results').innerHTML = '';
+    statusEl.textContent = '⚠️ ' + err.message;
+    statusEl.className = 'finder-status err';
+  } finally {
+    searchBtn.disabled = false;
+    searchBtn.textContent = 'Search';
+  }
+}
+
+function renderFinderResults(vertical) {
+  const statusEl  = $('finder-status');
+  const container = $('finder-results');
+
+  if (!finderResults.length) {
+    container.innerHTML = '<div class="finder-empty">No businesses without websites found for this vertical in Wilmington. Try another vertical.</div>';
+    statusEl.textContent = '';
+    $('finder-add-btn').disabled = true;
+    return;
+  }
+
+  statusEl.textContent = finderResults.length + ' businesses found without a website — ' + (finderResults.length === 20 ? 'showing top 20' : 'excluding any already in your CRM');
+  statusEl.className = 'finder-status';
+
+  container.innerHTML =
+    '<div class="finder-select-all"><label><input type="checkbox" id="finder-check-all" checked onchange="toggleAllChecks(this.checked)" /> Select all (' + finderResults.length + ')</label></div>' +
+    finderResults.map((p, i) => {
+      const name    = esc(p.displayName?.text || 'Unknown Business');
+      const addr    = esc(p.formattedAddress || '');
+      const phone   = p.nationalPhoneNumber ? ' &middot; ' + esc(p.nationalPhoneNumber) : '';
+      return `<label class="finder-result-item">
+        <input type="checkbox" class="finder-cb" data-idx="${i}" checked />
+        <div class="finder-result-info">
+          <div class="finder-result-name">${name}</div>
+          <div class="finder-result-sub">${addr}${phone}</div>
+        </div>
+      </label>`;
+    }).join('');
+
+  document.querySelectorAll('.finder-cb').forEach(cb => cb.addEventListener('change', syncFinderBtn));
+  syncFinderBtn();
+}
+
+function toggleAllChecks(checked) {
+  document.querySelectorAll('.finder-cb').forEach(cb => { cb.checked = checked; });
+  syncFinderBtn();
+}
+
+function syncFinderBtn() {
+  const n   = document.querySelectorAll('.finder-cb:checked').length;
+  const btn = $('finder-add-btn');
+  btn.disabled = n === 0;
+  btn.textContent = n > 0 ? 'Add ' + n + ' Prospect' + (n > 1 ? 's' : '') : 'Add Prospects';
+  /* keep select-all checkbox in sync */
+  const all = $('finder-check-all');
+  if (all) all.checked = n === document.querySelectorAll('.finder-cb').length;
+}
+
+$('finder-add-btn').addEventListener('click', () => {
+  const vertical = $('finder-vertical').value;
+  const idxs = [...document.querySelectorAll('.finder-cb:checked')].map(cb => +cb.dataset.idx);
+  let added = 0;
+  idxs.forEach(i => {
+    const p = finderResults[i];
+    if (!p) return;
+    prospects.push({
+      id:            uid(),
+      businessName:  p.displayName?.text || '',
+      contactName:   '',
+      email:         '',
+      phone:         p.nationalPhoneNumber || '',
+      vertical,
+      source:        'Google Maps',
+      status:        'New',
+      dateContacted: '',
+      followUpDate:  '',
+      notes:         p.formattedAddress || ''
+    });
+    added++;
+  });
+  save();
+  renderTable();
+  renderStats();
+  closeFinder();
+  toast(added + ' prospect' + (added > 1 ? 's' : '') + ' added from Google Places.');
+});
 
 /* ─── Init ───────────────────────────────────────────────────────────────────*/
 renderStats();
