@@ -836,11 +836,7 @@ const VERTICALS = [
 
 /* ─── Places API key ─────────────────────────────────────────────────────────*/
 const PLACES_KEY_STORE = 'rtd_places_key';
-const PLACES_KEY_DEFAULT = atob('QUl6YVN5QmI2V1MwMThQVUFRU2pJVjRMUVVIdUJNb2w5NnhzTy1R');
-if (!localStorage.getItem(PLACES_KEY_STORE)) {
-  localStorage.setItem(PLACES_KEY_STORE, PLACES_KEY_DEFAULT);
-}
-function getPlacesKey() { return localStorage.getItem(PLACES_KEY_STORE) || PLACES_KEY_DEFAULT; }
+function getPlacesKey() { return localStorage.getItem(PLACES_KEY_STORE) || ''; }
 
 /* ─── State ──────────────────────────────────────────────────────────────────*/
 let prospects = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
@@ -1370,12 +1366,14 @@ function esc(s) {
 
 /* ─── Finder ─────────────────────────────────────────────────────────────────*/
 function openFinder() {
-  $('finder-key-input').value = getPlacesKey();
-  $('finder-vertical').value  = '';
+  const saved = getPlacesKey();
+  $('finder-key-input').value   = saved;
+  $('finder-key-row').style.borderColor = saved ? '' : 'var(--gold)';
+  $('finder-vertical').value    = '';
   $('finder-results').innerHTML = '';
-  $('finder-status').textContent = '';
-  $('finder-status').className = 'finder-status';
-  $('finder-add-btn').disabled = true;
+  $('finder-status').textContent = saved ? '' : '⚠️ Paste your Google Places API key above and click Save before searching.';
+  $('finder-status').className  = saved ? 'finder-status' : 'finder-status err';
+  $('finder-add-btn').disabled  = true;
   $('finder-add-btn').textContent = 'Add Prospects';
   $('finder-overlay').classList.add('active');
 }
@@ -1394,7 +1392,10 @@ $('finder-save-key').addEventListener('click', () => {
   const val = $('finder-key-input').value.trim();
   if (!val) return;
   localStorage.setItem(PLACES_KEY_STORE, val);
-  toast('API key saved.');
+  $('finder-key-row').style.borderColor = '';
+  $('finder-status').textContent = '';
+  $('finder-status').className = 'finder-status';
+  toast('API key saved to this browser.');
 });
 
 $('finder-search-btn').addEventListener('click', runSearch);
@@ -1403,13 +1404,19 @@ $('finder-vertical').addEventListener('keydown', e => { if (e.key === 'Enter') r
 async function runSearch() {
   const vertical = $('finder-vertical').value;
   const statusEl = $('finder-status');
+  const key = getPlacesKey();
+
+  if (!key) {
+    statusEl.textContent = '⚠️ Paste your Google Places API key above and click Save first.';
+    statusEl.className = 'finder-status err';
+    $('finder-key-input').focus();
+    return;
+  }
   if (!vertical) {
     statusEl.textContent = 'Please select a vertical first.';
     statusEl.className = 'finder-status err';
     return;
   }
-
-  const key = getPlacesKey();
   const searchBtn = $('finder-search-btn');
   searchBtn.disabled = true;
   searchBtn.textContent = 'Searching…';
