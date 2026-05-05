@@ -402,7 +402,33 @@
       border-left: 3px solid var(--accent);
       border-radius: var(--radius);
       padding: 10px 14px;
+      margin-bottom: 14px;
+    }
+    .ss-cats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
       margin-bottom: 16px;
+    }
+    .ss-cat-btn {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 4px 13px;
+      border-radius: 100px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all .18s;
+      white-space: nowrap;
+    }
+    .ss-cat-btn:hover { background: var(--surface-alt); color: var(--text); }
+    .ss-cat-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+    .ss-count {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-bottom: 10px;
     }
     .ss-grid {
       display: grid;
@@ -667,6 +693,8 @@
   <!-- ══════════════════ SEARCH STRINGS TAB ══════════════════ -->
   <div class="tab-pane" id="tab-search-strings">
     <p class="ss-note">Click any card to copy the search string to your clipboard, then paste it into Google Maps to find local prospects.</p>
+    <div class="ss-cats" id="ss-cats"></div>
+    <div class="ss-count" id="ss-count"></div>
     <div class="ss-grid" id="ss-container"></div>
   </div>
 
@@ -1226,90 +1254,99 @@ function copyTemplate(id) {
 }
 
 /* ─── Search Strings ─────────────────────────────────────────────────────────*/
-const SEARCH_STRINGS = [
-  /* Handyman */
-  'handyman Wilmington NC',
-  'handyman Leland NC',
-  'handyman Brunswick County NC',
-  /* Pressure Washing */
-  'pressure washing Wilmington NC',
-  'pressure washing Leland NC',
-  /* Gutter Cleaning */
-  'gutter cleaning Wilmington NC',
-  'gutter cleaning near Wilmington NC',
-  /* Lawn Care */
-  'lawn care Wilmington NC',
-  'lawn maintenance Wilmington NC',
-  'landscaping Wilmington NC',
-  /* House Painting */
-  'house painting Wilmington NC',
-  'interior painter Wilmington NC',
-  'exterior painter Wilmington NC',
-  /* Flooring */
-  'flooring contractor Wilmington NC',
-  'hardwood floor installation Wilmington NC',
-  /* Fence Installation */
-  'fence installation Wilmington NC',
-  'fence company Wilmington NC',
-  /* Roofing */
-  'roofing contractor Wilmington NC',
-  'roof repair Wilmington NC',
-  'roofing Leland NC',
-  /* HVAC */
-  'HVAC Wilmington NC',
-  'AC repair Wilmington NC',
-  'air conditioning service Wilmington NC',
-  /* Plumbing */
-  'plumber Wilmington NC',
-  'plumbing contractor Wilmington NC',
-  /* Electrical */
-  'electrician Wilmington NC',
-  'electrical contractor Wilmington NC',
-  /* Cleaning Service */
-  'house cleaning service Wilmington NC',
-  'maid service Wilmington NC',
-  'cleaning service Leland NC',
-  /* Junk Removal */
-  'junk removal Wilmington NC',
-  'junk hauling Wilmington NC',
-  /* Moving */
-  'moving company Wilmington NC',
-  'local movers Wilmington NC',
-  /* Pool Service */
-  'pool service Wilmington NC',
-  'pool cleaning Wilmington NC',
-  /* Pest Control */
-  'pest control Wilmington NC',
-  'exterminator Wilmington NC',
-  /* Concrete */
-  'concrete contractor Wilmington NC',
-  'concrete driveway Wilmington NC',
-  /* Tree Service */
-  'tree service Wilmington NC',
-  'tree removal Wilmington NC',
-  'tree trimming Wilmington NC',
-  /* Area variants */
-  'handyman Southport NC',
-  'lawn care Leland NC',
-  'pest control Leland NC',
-  'HVAC Leland NC',
-  'roofing Brunswick County NC',
-  'cleaning service Brunswick County NC',
+/* ─── Search Strings ─────────────────────────────────────────────────────────*/
+const SS_LOCATIONS = [
+  'Wilmington NC','Midtown Wilmington NC','Downtown Wilmington NC',
+  'Ogden NC','Myrtle Grove NC','Carolina Beach NC','Wrightsville Beach NC',
+  'Kure Beach NC','Castle Hayne NC','Wrightsboro NC','Porters Neck NC',
+  'Murrayville NC','Holly Shelter NC','Monkey Junction NC','Leland NC',
+  'Southport NC','Shallotte NC','Oak Island NC','Holden Beach NC',
+  'Ocean Isle Beach NC','Sunset Beach NC','Calabash NC',
+  'Boiling Spring Lakes NC','Bolivia NC','Navassa NC','Belville NC',
+  'Northwest NC','Carolina Shores NC','Caswell Beach NC','St. James NC',
+  'Varnamtown NC','Ash NC','Supply NC','Winnabow NC','Hampstead NC',
+  'Burgaw NC','Surf City NC','Topsail Beach NC','Rocky Point NC',
+  'Atkinson NC','Watha NC','Saint Helena NC','Maple Hill NC',
+  'Scotts Hill NC','Long Creek NC','Currie NC','Holly Ridge NC','Penderlea NC'
 ];
 
+const SS_SERVICES = {
+  'Handyman':           ['handyman','handyman service','handyman contractor'],
+  'Pressure Washing':   ['pressure washing','power washing','soft washing'],
+  'Gutters':            ['gutter cleaning','gutter installation','gutter repair'],
+  'Lawn & Landscaping': ['lawn care','lawn mowing','landscaping','yard service'],
+  'Painting':           ['house painting','interior painting','exterior painting','painter'],
+  'Flooring':           ['flooring installation','hardwood flooring','tile installation'],
+  'Fencing':            ['fence installation','fence company','fencing contractor'],
+  'Roofing':            ['roofing contractor','roof repair','roofer'],
+  'HVAC & AC':          ['HVAC repair','HVAC contractor','air conditioning repair'],
+  'Plumbing':           ['plumber','plumbing repair','plumbing contractor'],
+  'Electrical':         ['electrician','electrical contractor','electrical repair'],
+  'Cleaning Services':  ['cleaning service','house cleaning','commercial cleaning','maid service'],
+  'Junk & Hauling':     ['junk removal','debris removal','hauling service'],
+  'Moving':             ['moving company','local movers','moving service'],
+  'Pool Services':      ['pool service','pool cleaning','pool maintenance'],
+  'Pest Control':       ['pest control','exterminator','termite treatment'],
+  'Concrete':           ['concrete contractor','driveway installation','concrete repair'],
+  'Tree Services':      ['tree service','tree removal','tree trimming','arborist'],
+  'Carpet & Upholstery':['carpet cleaning','upholstery cleaning'],
+  'Window Cleaning':    ['window cleaning','window washing'],
+  'Chimney':            ['chimney sweep','chimney cleaning','chimney repair'],
+  'Appliance Repair':   ['appliance repair','washer repair','dryer repair'],
+  'Masonry':            ['masonry contractor','brick repair','stone work'],
+  'Drywall':            ['drywall repair','drywall contractor','sheetrock repair'],
+  'Decks & Porches':    ['deck builder','deck installation','porch builder'],
+};
+
+/* build flat lists per category: service × location */
+const SS_DATA = {};
+for (const [cat, svcs] of Object.entries(SS_SERVICES)) {
+  SS_DATA[cat] = [];
+  for (const loc of SS_LOCATIONS) {
+    for (const svc of svcs) {
+      SS_DATA[cat].push(`${svc} ${loc}`);
+    }
+  }
+}
+
+let activeSsCat = Object.keys(SS_SERVICES)[0];
+let currentSSList = SS_DATA[activeSsCat];
+
 function renderSearchStrings() {
-  document.getElementById('ss-container').innerHTML = SEARCH_STRINGS.map((s, i) => `
-    <div class="ss-card" id="ss-${i}" onclick="copySSCard(${i})">
+  const cats    = Object.keys(SS_SERVICES);
+  const catsEl  = document.getElementById('ss-cats');
+  const countEl = document.getElementById('ss-count');
+  const gridEl  = document.getElementById('ss-container');
+
+  /* pills */
+  catsEl.innerHTML = cats.map(c =>
+    `<button class="ss-cat-btn${c === activeSsCat ? ' active' : ''}" onclick="setSsCat('${c.replace(/'/g,"\\'")}')">
+      ${esc(c)}
+    </button>`
+  ).join('');
+
+  /* grid */
+  currentSSList = SS_DATA[activeSsCat];
+  countEl.textContent = currentSSList.length + ' search strings in this category';
+
+  gridEl.innerHTML = currentSSList.map((s, i) =>
+    `<div class="ss-card" id="ss-${i}" onclick="copySSCard(${i})">
       <span class="ss-text">${esc(s)}</span>
       <span class="ss-icon" id="ss-icon-${i}">📋</span>
-    </div>
-  `).join('');
+    </div>`
+  ).join('');
+}
+
+function setSsCat(cat) {
+  activeSsCat = cat;
+  renderSearchStrings();
 }
 
 function copySSCard(i) {
-  const str = SEARCH_STRINGS[i];
+  const str  = currentSSList[i];
   const card = document.getElementById('ss-' + i);
   const icon = document.getElementById('ss-icon-' + i);
+  if (!str || !card) return;
   copyText(str).then(() => {
     card.classList.add('copied');
     icon.textContent = '✓';
