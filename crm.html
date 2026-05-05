@@ -777,7 +777,7 @@
       <h2>Find Prospects</h2>
       <button class="modal-close" id="finder-close">&times;</button>
     </div>
-    <div class="finder-key-row">
+    <div class="finder-key-row" id="finder-key-row">
       <label>Places API Key</label>
       <input type="password" id="finder-key-input" autocomplete="off" />
       <button class="btn btn-secondary btn-sm" id="finder-save-key">Save</button>
@@ -1075,11 +1075,12 @@ $('prospect-form').addEventListener('submit', e => {
     prospects.push({ id: uid(), ...data });
   }
 
+  const wasEditing = !!editingId;
   save();
   renderTable();
   renderStats();
   closeModal();
-  toast(editingId ? 'Prospect updated.' : 'Prospect added.');
+  toast(wasEditing ? 'Prospect updated.' : 'Prospect added.');
 });
 
 /* ─── Delete ─────────────────────────────────────────────────────────────────*/
