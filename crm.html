@@ -650,13 +650,6 @@
         </select>
         <select id="filter-vertical">
           <option value="">All Verticals</option>
-          <option>Handyman</option><option>Pressure Washing</option><option>Gutter Cleaning</option>
-          <option>Lawn Care</option><option>House Painting</option><option>Flooring</option>
-          <option>Fence Installation</option><option>Roofing</option><option>HVAC</option>
-          <option>Plumbing</option><option>Electrical</option><option>Cleaning Service</option>
-          <option>Junk Removal</option><option>Moving</option><option>Pool Service</option>
-          <option>Pest Control</option><option>Concrete</option><option>Tree Service</option>
-          <option>Other</option>
         </select>
       </div>
       <div class="controls-right">
@@ -729,13 +722,6 @@
           <label>Vertical</label>
           <select name="vertical">
             <option value="">Select vertical</option>
-            <option>Handyman</option><option>Pressure Washing</option><option>Gutter Cleaning</option>
-            <option>Lawn Care</option><option>House Painting</option><option>Flooring</option>
-            <option>Fence Installation</option><option>Roofing</option><option>HVAC</option>
-            <option>Plumbing</option><option>Electrical</option><option>Cleaning Service</option>
-            <option>Junk Removal</option><option>Moving</option><option>Pool Service</option>
-            <option>Pest Control</option><option>Concrete</option><option>Tree Service</option>
-            <option>Other</option>
           </select>
         </div>
         <div class="fg">
@@ -785,12 +771,6 @@
     <div class="finder-controls">
       <select id="finder-vertical">
         <option value="">Select a vertical…</option>
-        <option>Handyman</option><option>Pressure Washing</option><option>Gutter Cleaning</option>
-        <option>Lawn Care</option><option>House Painting</option><option>Flooring</option>
-        <option>Fence Installation</option><option>Roofing</option><option>HVAC</option>
-        <option>Plumbing</option><option>Electrical</option><option>Cleaning Service</option>
-        <option>Junk Removal</option><option>Moving</option><option>Pool Service</option>
-        <option>Pest Control</option><option>Concrete</option><option>Tree Service</option>
       </select>
       <button class="btn btn-primary" id="finder-search-btn">Search</button>
     </div>
@@ -828,10 +808,11 @@ const WEEK_GOAL   = 5;
 const REVENUE_PER = 800;
 
 const VERTICALS = [
-  'Handyman','Pressure Washing','Gutter Cleaning','Lawn Care','House Painting',
-  'Flooring','Fence Installation','Roofing','HVAC','Plumbing','Electrical',
-  'Cleaning Service','Junk Removal','Moving','Pool Service','Pest Control',
-  'Concrete','Tree Service','Other'
+  'Handyman','Pressure Washing','Gutters','Lawn & Landscaping','Painting',
+  'Flooring','Fencing','Roofing','HVAC & AC','Plumbing','Electrical',
+  'Cleaning Services','Junk & Hauling','Moving','Pool Services','Pest Control',
+  'Concrete','Tree Services','Carpet & Upholstery','Window Cleaning','Chimney',
+  'Appliance Repair','Masonry','Drywall','Decks & Porches','Other'
 ];
 
 /* ─── Places API key ─────────────────────────────────────────────────────────*/
@@ -1548,7 +1529,22 @@ $('finder-add-btn').addEventListener('click', () => {
   toast(added + ' prospect' + (added > 1 ? 's' : '') + ' added from Google Places.');
 });
 
+/* ─── Populate vertical dropdowns ───────────────────────────────────────────*/
+function populateVerticalSelects() {
+  const opts     = VERTICALS.map(v => `<option>${esc(v)}</option>`).join('');
+  const filterSel = $('filter-vertical');
+  const formSel   = document.querySelector('select[name="vertical"]');
+  filterSel.innerHTML = '<option value="">All Verticals</option>' + opts;
+  formSel.innerHTML   = '<option value="">Select vertical</option>' + opts;
+
+  /* Finder uses SS_SERVICES keys (no "Other" — can't search for "Other") */
+  $('finder-vertical').innerHTML =
+    '<option value="">Select a vertical…</option>' +
+    Object.keys(SS_SERVICES).map(v => `<option>${esc(v)}</option>`).join('');
+}
+
 /* ─── Init ───────────────────────────────────────────────────────────────────*/
+populateVerticalSelects();
 renderStats();
 renderTable();
 renderTemplates();
