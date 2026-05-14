@@ -163,13 +163,13 @@ p { font-size: 1rem; line-height: 1.75; color: var(--text-muted); }
   position: fixed;
   top: 0; left: 0; right: 0;
   z-index: 1000;
-  padding: 1.25rem 0;
+  padding: 0.875rem 0;
   transition: var(--transition);
 }
 
 .navbar.scrolled {
   background: var(--navy);
-  padding: 0.85rem 0;
+  padding: 0.625rem 0;
   box-shadow: 0 2px 20px rgba(0,0,0,0.35);
 }
 
@@ -186,7 +186,7 @@ p { font-size: 1rem; line-height: 1.75; color: var(--text-muted); }
 }
 
 .nav-logo img {
-  height: 72px;
+  height: 56px;
   width: auto;
 }
 
@@ -215,7 +215,7 @@ p { font-size: 1rem; line-height: 1.75; color: var(--text-muted); }
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 2rem;
+  gap: 1.5rem;
 }
 
 .nav-links a {
@@ -343,10 +343,10 @@ p { font-size: 1rem; line-height: 1.75; color: var(--text-muted); }
   z-index: 1;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  align-items: stretch;
-  padding-top: 5rem;
-  padding-bottom: 5rem;
+  gap: 3rem;
+  align-items: center;
+  padding-top: 6rem;
+  padding-bottom: 4rem;
 }
 
 .hero-content { max-width: 580px; display: flex; flex-direction: column; align-items: center; text-align: center; }
@@ -427,8 +427,8 @@ p { font-size: 1rem; line-height: 1.75; color: var(--text-muted); }
 
 .hero-logo-wrap {
   position: relative;
-  width: 586px;
-  height: 586px;
+  width: 420px;
+  height: 420px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1466,9 +1466,9 @@ select.form-control {
 
 .hero-stats {
   display: flex;
-  gap: 3rem;
-  margin-top: 2.5rem;
-  padding-top: 2rem;
+  gap: 2rem;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
   border-top: 1px solid rgba(255,255,255,0.12);
 }
 
