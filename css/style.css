@@ -658,6 +658,7 @@ p { font-size: 1rem; line-height: 1.75; color: var(--text-muted); }
 .pricing-card {
   background: var(--white);
   border: 2px solid var(--gray-light);
+  border-top: 4px solid var(--gold);
   border-radius: var(--radius-lg);
   padding: 2.25rem 2rem;
   position: relative;
@@ -1076,6 +1077,7 @@ p { font-size: 1rem; line-height: 1.75; color: var(--text-muted); }
 .pricing-tier-header {
   margin-top: 3rem;
   margin-bottom: 1.25rem;
+  text-align: center;
 }
 
 .pricing-grid--anchor {
