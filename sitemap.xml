@@ -51,13 +51,6 @@
   </url>
 
   <url>
-    <loc>https://risingtidedigital.us/intake.html</loc>
-    <lastmod>2026-04-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
     <loc>https://risingtidedigital.us/blog/</loc>
     <lastmod>2026-05-09</lastmod>
     <changefreq>weekly</changefreq>
@@ -67,6 +60,13 @@
   <url>
     <loc>https://risingtidedigital.us/blog/facebook-page-vs-website-wilmington-nc.html</loc>
     <lastmod>2026-05-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://risingtidedigital.us/blog/website-templates-pros-cons-wilmington-nc.html</loc>
+    <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

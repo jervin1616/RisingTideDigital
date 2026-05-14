@@ -3,6 +3,6 @@ Allow: /
 
 # Keep utility/confirmation pages out of the index
 Disallow: /thanks.html
-Disallow: /intake.html
+Disallow: /crm.html
 
 Sitemap: https://risingtidedigital.us/sitemap.xml
