@@ -1082,10 +1082,9 @@ p { font-size: 1rem; line-height: 1.75; color: var(--text-muted); }
 
 .pricing-grid--anchor {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
-  max-width: 900px;
-  margin: 0 auto;
+  align-items: stretch;
 }
 
 .pricing-card--anchor {
@@ -1106,9 +1105,13 @@ p { font-size: 1rem; line-height: 1.75; color: var(--text-muted); }
 .launch-ready-callout {
   background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
   border-radius: var(--radius-lg);
-  padding: 3.5rem 2.5rem;
+  padding: 3rem 2rem;
   text-align: center;
-  margin: 3rem 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .launch-ready-callout h3 {
@@ -1125,7 +1128,7 @@ p { font-size: 1rem; line-height: 1.75; color: var(--text-muted); }
 }
 
 @media (max-width: 768px) {
-  .pricing-grid--anchor { grid-template-columns: 1fr; max-width: 440px; }
+  .pricing-grid--anchor { grid-template-columns: 1fr; max-width: 440px; margin: 0 auto; }
   .pricing-grid--addons { grid-template-columns: repeat(2, 1fr); }
   .launch-ready-callout { padding: 2.5rem 1.5rem; }
   .launch-ready-callout .btn { width: 100%; justify-content: center; }
