@@ -1075,14 +1075,29 @@ p { font-size: 1rem; line-height: 1.75; color: var(--text-muted); }
 
 /* Services page — tiered pricing groups */
 .pricing-tier-header {
-  margin-top: 3rem;
-  margin-bottom: 1.25rem;
+  margin-top: 3.5rem;
+  margin-bottom: 1.75rem;
   text-align: center;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.pricing-tier-header::before,
+.pricing-tier-header::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(201,164,67,0.4), transparent);
 }
 
 .pricing-tier-header .section-label {
-  font-size: 1.5rem;
-  letter-spacing: 0.1em;
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--gold);
+  white-space: nowrap;
 }
 
 .pricing-grid--anchor {
