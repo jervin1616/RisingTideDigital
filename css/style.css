@@ -1963,25 +1963,7 @@ select.form-control {
   margin-bottom: 0;
 }
 
-/* ============================================================
-   ACCESSIBILITY & UTILITY ADDITIONS
-   ============================================================ */
-
-/* Skip navigation link — hidden off-canvas, revealed on keyboard focus */
-.skip-link {
-  position: fixed;
-  top: 1rem;
-  left: -9999px;
-  z-index: 9999;
-  padding: 0.6rem 1.25rem;
-  background: var(--gold);
-  color: var(--navy);
-  font-weight: 700;
-  font-size: 0.875rem;
-  border-radius: var(--radius);
-  text-decoration: none;
-  white-space: nowrap;
-}
+/* =====================================================}
 .skip-link:focus { left: 1rem; }
 
 /* Focus styles (keyboard navigation) */
