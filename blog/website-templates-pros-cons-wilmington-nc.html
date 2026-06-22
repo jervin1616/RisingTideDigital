@@ -84,6 +84,14 @@
     .blog-post .cta-block .btn { margin: 0 0.4rem; }
     .pro-tag { display: inline-block; background: #dcfce7; color: #166534; font-size: 0.75rem; font-weight: 700; padding: 0.15rem 0.55rem; border-radius: 999px; margin-right: 0.5rem; vertical-align: middle; }
     .con-tag { display: inline-block; background: #fee2e2; color: #991b1b; font-size: 0.75rem; font-weight: 700; padding: 0.15rem 0.55rem; border-radius: 999px; margin-right: 0.5rem; vertical-align: middle; }
+    .post-nav { display: flex; justify-content: space-between; gap: 1rem; margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid #e5e7eb; }
+    .post-nav a { display: flex; flex-direction: column; max-width: 48%; text-decoration: none; }
+    .post-nav-prev { align-items: flex-start; }
+    .post-nav-next { align-items: flex-end; text-align: right; margin-left: auto; }
+    .post-nav-label { font-size: 0.8rem; color: #6b7280; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem; }
+    .post-nav-title { font-size: 0.95rem; font-weight: 600; color: var(--navy, #1e3a5f); line-height: 1.4; }
+    .post-nav a:hover .post-nav-title { text-decoration: underline; }
+    @media (max-width: 500px) { .post-nav { flex-direction: column; } .post-nav-next { align-items: flex-start; text-align: left; margin-left: 0; } }
   </style>
   <!-- LocalBusiness Schema -->
   <script type="application/ld+json">
@@ -290,6 +298,17 @@
         <a href="../services.html" class="btn btn-secondary">See Pricing &amp; Packages</a>
       </div>
 
+      <nav class="post-nav" aria-label="More posts">
+        <a href="do-contractors-need-a-website-wilmington-nc.html" class="post-nav-prev">
+          <span class="post-nav-label">&larr; Previous</span>
+          <span class="post-nav-title">Do Contractors Really Need a Website?</span>
+        </a>
+        <a href="facebook-page-vs-website-wilmington-nc.html" class="post-nav-next">
+          <span class="post-nav-label">Next &rarr;</span>
+          <span class="post-nav-title">Why Your Facebook Page Isn't Enough</span>
+        </a>
+      </nav>
+
     </article>
   </main>
 
@@ -335,9 +354,9 @@
         <div>
           <p class="footer-heading">From the Blog</p>
           <ul class="footer-links">
+            <li><a href="/blog/google-business-profile-wilmington-nc.html">Google Business Profile Setup</a></li>
+            <li><a href="/blog/website-redesign-signs-wilmington-nc.html">5 Signs Your Site Needs a Redesign</a></li>
             <li><a href="/blog/facebook-page-vs-website-wilmington-nc.html">Why Facebook Isn't Enough</a></li>
-            <li><a href="/blog/website-templates-pros-cons-wilmington-nc.html">Website Templates: Pros &amp; Cons</a></li>
-            <li><a href="/blog/how-much-does-a-website-cost-wilmington-nc.html">How Much Does a Website Cost?</a></li>
             <li><a href="/blog/">All Posts</a></li>
           </ul>
         </div>
