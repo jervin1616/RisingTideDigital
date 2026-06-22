@@ -1963,8 +1963,31 @@ select.form-control {
   margin-bottom: 0;
 }
 
-/* =====================================================}
-.skip-link:focus { left: 1rem; }
+/* Skip link (keyboard accessibility) */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  z-index: 9999;
+}
+.skip-link:focus {
+  position: fixed;
+  top: 0;
+  left: 1rem;
+  width: auto;
+  height: auto;
+  overflow: visible;
+  background: #fff;
+  color: var(--navy, #1e3a5f);
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 0 0 4px 4px;
+  z-index: 9999;
+}
 
 /* Focus styles (keyboard navigation) */
 a:focus-visible,
